@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guyverse - Gaya, Aksesoris & Peralatan Pria</title>
+<link rel="icon" type="image/png">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&family=Source+Serif+4:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --charcoal:#1B1F23; --navy:#2C3E50; --copper:#C8963E; --copper-dark:#A87A2B;
+  --bg:#F4F2EE; --card:#FFFFFF; --text:#333333; --muted:#6b6f73; --radius:6px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Source Serif 4',Georgia,serif;background:var(--bg);color:var(--text);line-height:1.6}
+h1,h2,h3,.brand,.btn,nav a{font-family:'Archivo',Arial,sans-serif}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:3px solid var(--copper);outline-offset:2px}
+.container{max-width:1160px;margin:0 auto;padding:0 20px}
+
+/* Navbar */
+header{background:var(--charcoal);position:sticky;top:0;z-index:50}
+.nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+.brand{font-size:1.5rem;font-weight:800;color:#fff;letter-spacing:-.5px}
+.brand span{color:var(--copper)}
+nav ul{display:flex;gap:28px;list-style:none}
+nav a{color:#d6d8da;font-weight:600;font-size:.95rem;transition:color .2s}
+nav a:hover{color:var(--copper)}
+.btn{display:inline-block;padding:12px 24px;border-radius:var(--radius);font-weight:600;border:0;cursor:pointer;font-size:.95rem;transition:background .2s}
+.btn-primary{background:var(--copper);color:var(--charcoal)}
+.btn-primary:hover{background:var(--copper-dark);color:#fff}
+.menu-toggle{display:none;background:none;border:0;color:#fff;font-size:1.6rem;cursor:pointer}
+
+/* Hero */
+.hero{background:linear-gradient(135deg,var(--charcoal) 55%,var(--navy));color:#fff;padding:96px 0 110px}
+.hero h1{font-size:clamp(2.4rem,6vw,4.4rem);font-weight:800;line-height:1.05;max-width:760px;letter-spacing:-1.5px}
+.hero p{max-width:540px;margin:22px 0 36px;color:#c9ccd0;font-size:1.15rem}
+.search{display:flex;gap:10px;background:#fff;padding:10px;border-radius:var(--radius);max-width:680px;flex-wrap:wrap}
+.search input,.search select{flex:1;min-width:150px;border:0;padding:12px;font-size:1rem;font-family:inherit;background:transparent;color:var(--text)}
+.search input{border-right:1px solid #ddd}
+.stats{display:flex;gap:44px;margin-top:48px;flex-wrap:wrap}
+.stats strong{display:block;font-family:'Archivo';font-size:1.8rem;color:var(--copper)}
+.stats span{color:#aeb2b7;font-size:.9rem}
+
+/* Sections */
+section{padding:76px 0}
+.section-head{display:flex;justify-content:space-between;align-items:end;margin-bottom:34px;gap:16px;flex-wrap:wrap}
+.section-head h2{font-size:2rem;font-weight:800;color:var(--charcoal);letter-spacing:-.5px}
+.section-head p{color:var(--muted)}
+
+/* Categories */
+.cats{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+.cat{background:var(--charcoal);color:#fff;padding:34px 26px;border-radius:var(--radius);transition:transform .2s,background .2s}
+.cat:hover{background:var(--navy);transform:translateY(-3px)}
+.cat .ico{font-size:2rem;margin-bottom:12px}
+.cat h3{font-size:1.2rem;margin-bottom:4px}
+.cat p{color:#b3b7bc;font-size:.92rem}
+
+/* Product cards */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:22px}
+.card{background:var(--card);border-radius:var(--radius);overflow:hidden;border:1px solid #e4e0d8;display:flex;flex-direction:column}
+.thumb{height:190px;display:flex;align-items:center;justify-content:center;font-size:4rem;background:linear-gradient(135deg,#e9e4d9,#d9d2c3)}
+.card-body{padding:20px;display:flex;flex-direction:column;flex:1}
+.tag{display:inline-block;align-self:flex-start;font-family:'Archivo';font-size:.75rem;font-weight:600;background:var(--charcoal);color:var(--copper);padding:3px 10px;border-radius:20px;margin-bottom:10px}
+.card h3{font-size:1.1rem;color:var(--charcoal);margin-bottom:6px}
+.card p{color:var(--muted);font-size:.93rem;flex:1}
+.card-foot{display:flex;justify-content:space-between;align-items:center;margin-top:16px}
+.price{font-family:'Archivo';font-weight:800;color:var(--charcoal)}
+.link{color:var(--copper-dark);font-family:'Archivo';font-weight:600;font-size:.9rem}
+.link:hover{text-decoration:underline}
+
+/* Steps */
+.steps-wrap{background:var(--charcoal);color:#fff}
+.steps-wrap h2{color:#fff}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:28px}
+.step b{display:flex;width:44px;height:44px;border-radius:50%;background:var(--copper);color:var(--charcoal);align-items:center;justify-content:center;font-family:'Archivo';font-weight:800;margin-bottom:14px}
+.step h3{margin-bottom:6px}
+.step p{color:#b3b7bc;font-size:.95rem}
+
+/* Gaya & Tips */
+.filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:28px}
+.filters button{font-family:'Archivo';font-weight:600;padding:9px 18px;border-radius:30px;border:1px solid var(--charcoal);background:transparent;color:var(--charcoal);cursor:pointer;transition:all .2s}
+.filters button.active,.filters button:hover{background:var(--charcoal);color:var(--copper)}
+.empty{color:var(--muted);padding:20px 0}
+
+/* Newsletter + Footer */
+footer{background:var(--charcoal);color:#aeb2b7;padding:56px 0 24px}
+.foot{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:32px}
+footer h4{color:#fff;font-family:'Archivo';margin-bottom:12px}
+footer li{list-style:none;margin-bottom:8px;font-size:.93rem}
+footer a:hover{color:var(--copper)}
+.copy{border-top:1px solid #343a40;margin-top:36px;padding-top:20px;text-align:center;font-size:.85rem}
+
+[hidden]{display:none!important}
+.nav-actions{display:flex;gap:10px;align-items:center}
+.icon-btn{background:transparent;border:1px solid #4a5058;color:#fff;border-radius:var(--radius);padding:10px 14px;cursor:pointer;font-family:'Archivo';font-weight:600}
+.icon-btn:hover{border-color:var(--copper)}
+.icon-btn span{background:var(--copper);color:var(--charcoal);border-radius:20px;padding:1px 8px;margin-left:4px;font-size:.8rem}
+.nav-actions .btn{padding:10px 18px}
+.profile{display:grid;grid-template-columns:1.1fr 1fr;gap:48px;align-items:center}
+.profile h2,.about-block h2{font-size:2rem;font-weight:800;color:var(--charcoal);letter-spacing:-.5px;margin-bottom:14px}
+.profile p,.about-block p{margin-bottom:14px;max-width:62ch}
+.facts{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.fact{background:var(--card);border:1px solid #e4e0d8;border-left:4px solid var(--copper);padding:20px;border-radius:var(--radius)}
+.fact strong{display:block;font-family:'Archivo';font-size:1.5rem;color:var(--charcoal)}
+.fact span{color:var(--muted);font-size:.92rem}
+.about-hero{background:linear-gradient(135deg,var(--charcoal) 55%,var(--navy));color:#fff;padding:84px 0}
+.about-hero h1{font-size:clamp(2.2rem,5vw,3.6rem);font-weight:800;letter-spacing:-1px}
+.about-hero p{max-width:600px;margin-top:16px;color:#c9ccd0;font-size:1.15rem}
+.overlay{position:fixed;inset:0;background:rgba(15,18,20,.7);z-index:100;display:flex;align-items:center;justify-content:center;padding:20px}
+.modal{background:#fff;border-radius:var(--radius);padding:32px;width:100%;max-width:420px;position:relative}
+.modal h2{font-family:'Archivo';color:var(--charcoal);margin-bottom:6px}
+.note{color:var(--muted);font-size:.93rem;margin-bottom:14px}
+.close{position:absolute;top:10px;right:14px;background:none;border:0;font-size:1.8rem;cursor:pointer;color:var(--muted)}
+.tabs{display:flex;margin-bottom:16px;border-bottom:2px solid #e4e0d8}
+.tabs button{flex:1;padding:10px;background:none;border:0;font-family:'Archivo';font-weight:600;cursor:pointer;color:var(--muted);border-bottom:3px solid transparent;margin-bottom:-2px}
+.tabs button.active{color:var(--charcoal);border-color:var(--copper)}
+.modal input{width:100%;padding:12px;margin-bottom:12px;border:1px solid #cfcac0;border-radius:var(--radius);font-size:1rem;font-family:inherit}
+.err{color:#b3261e;font-size:.9rem;min-height:1.3em;margin-bottom:8px}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(400px,100%);background:#fff;z-index:90;display:flex;flex-direction:column;box-shadow:-8px 0 30px rgba(0,0,0,.25)}
+.drawer-head{display:flex;justify-content:space-between;align-items:center;padding:18px 20px;background:var(--charcoal);color:#fff}
+.drawer-head .close{position:static;color:#fff}
+#cartItems{flex:1;overflow:auto;padding:12px 20px}
+.ci{display:flex;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid #eee}
+.ci .e{font-size:2rem}
+.ci div:nth-child(2){flex:1}
+.ci small{color:var(--muted)}
+.qty button{width:26px;height:26px;border:1px solid #ccc;background:#fff;border-radius:4px;cursor:pointer}
+.drawer-foot{padding:20px;border-top:1px solid #eee}
+.total{display:flex;justify-content:space-between;margin-bottom:12px;font-family:'Archivo'}
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--charcoal);color:#fff;padding:12px 22px;border-radius:var(--radius);z-index:120;border-left:4px solid var(--copper);opacity:0;pointer-events:none;transition:opacity .25s}
+.toast.show{opacity:1}
+@media(max-width:820px){
+  .profile{grid-template-columns:1fr}
+  .nav-actions .btn{padding:8px 12px;font-size:.85rem}
+  .menu-toggle{display:block}
+  nav{position:absolute;top:68px;left:0;right:0;background:var(--charcoal);display:none;padding:10px 20px 20px}
+  nav.open{display:block}
+  nav ul{flex-direction:column;gap:16px}
+  .nav>.btn{display:none}
+  .foot{grid-template-columns:1fr 1fr}
+  .search input{border-right:0}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+nav a[aria-current="page"]{color:var(--copper)}
+.finder{padding:11px 14px;border:1px solid #cfcac0;border-radius:var(--radius);font:inherit;min-width:240px;background:#fff}
+
+
+
+/* ===== Peningkatan UI/UX ===== */
+body{background:radial-gradient(1100px 480px at 88% -4%,rgba(200,150,62,.12),transparent 60%),var(--bg)}
+header{background:rgba(27,31,35,.88);backdrop-filter:blur(12px);border-bottom:1px solid rgba(200,150,62,.25)}
+nav a{position:relative;padding:6px 0}
+nav a::after{content:"";position:absolute;left:0;bottom:-2px;height:2px;width:0;background:linear-gradient(90deg,var(--copper),#f0cf8a);transition:width .25s}
+nav a:hover::after,nav a[aria-current="page"]::after{width:100%}
+.btn{transition:transform .2s,box-shadow .2s,background .2s}
+.btn-primary{background:linear-gradient(135deg,#E3B35A,#C8963E 55%,#A87A2B);color:#1B1F23;box-shadow:0 6px 16px rgba(200,150,62,.35)}
+.btn-primary:hover{background:linear-gradient(135deg,#F0C672,#D8A24A 55%,#B8862F);color:#1B1F23;transform:translateY(-1px);box-shadow:0 10px 22px rgba(200,150,62,.45)}
+.hero,.about-hero{position:relative;overflow:hidden;background:radial-gradient(700px 380px at 90% 10%,rgba(200,150,62,.30),transparent 65%),radial-gradient(600px 400px at 0% 100%,rgba(70,100,140,.40),transparent 60%),linear-gradient(135deg,#14171A,var(--charcoal) 50%,var(--navy))}
+.hero::before,.about-hero::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:44px 44px;-webkit-mask-image:linear-gradient(180deg,#000,transparent 90%);mask-image:linear-gradient(180deg,#000,transparent 90%)}
+.hero .container,.about-hero .container{position:relative}
+.hero h1{max-width:640px;background:linear-gradient(180deg,#fff 40%,#dcc48f);-webkit-background-clip:text;background-clip:text;color:transparent}
+.search{box-shadow:0 20px 50px rgba(0,0,0,.35);border:1px solid rgba(200,150,62,.45)}
+.orbs{position:absolute;right:6%;top:42%;transform:translateY(-50%);width:340px;height:340px;pointer-events:none}
+.orbs span{position:absolute;display:flex;align-items:center;justify-content:center;width:110px;height:110px;font-size:3rem;border-radius:28px;background:linear-gradient(145deg,rgba(255,255,255,.16),rgba(255,255,255,.03));border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(6px);box-shadow:0 20px 40px rgba(0,0,0,.35)}
+.orbs span:nth-child(1){top:0;left:30px;transform:rotate(-8deg)}
+.orbs span:nth-child(2){top:24px;right:0;transform:rotate(7deg)}
+.orbs span:nth-child(3){bottom:10px;left:0;transform:rotate(6deg)}
+.orbs span:nth-child(4){bottom:0;right:40px;transform:rotate(-6deg)}
+@media(max-width:1100px){.orbs{display:none}}
+.perks{background:#fff;border-bottom:1px solid #e4e0d8}
+.perks .container{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:8px}
+.perk{display:flex;gap:12px;align-items:center;padding:20px 8px}
+.perk i{font-style:normal;font-size:1.5rem;flex:none;width:48px;height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#f6e6c4,#e9c981)}
+.perk strong{display:block;font-family:'Archivo';color:var(--charcoal);font-size:.95rem}
+.perk span{color:var(--muted);font-size:.85rem}
+.section-head h2{position:relative;padding-bottom:12px}
+.section-head h2::after{content:"";position:absolute;left:0;bottom:0;width:56px;height:4px;border-radius:2px;background:linear-gradient(90deg,var(--copper),#f0cf8a)}
+.cat{position:relative;overflow:hidden;min-height:190px;border:1px solid rgba(200,150,62,.25);transition:transform .25s,box-shadow .25s,border-color .25s}
+.cat.c-outfit,.cat.c-outfit:hover{background:linear-gradient(145deg,#1B1F23,#3a5169)}
+.cat.c-aksesoris,.cat.c-aksesoris:hover{background:linear-gradient(145deg,#241d14,#8a6528)}
+.cat.c-peralatan,.cat.c-peralatan:hover{background:linear-gradient(145deg,#1B1F23,#355846)}
+.cat:hover{transform:translateY(-6px);box-shadow:0 18px 36px rgba(27,31,35,.35);border-color:var(--copper)}
+.cat h3,.cat p{position:relative}
+.cat .ico{position:absolute;right:-6px;bottom:-18px;margin:0;font-size:7rem;line-height:1;opacity:.2;transition:transform .3s}
+.cat:hover .ico{transform:scale(1.12) rotate(-6deg)}
+.card{border-radius:12px;transition:transform .25s,box-shadow .25s,border-color .25s}
+.card:hover{transform:translateY(-5px);box-shadow:0 18px 40px rgba(27,31,35,.15);border-color:var(--copper)}
+.thumb{position:relative;overflow:hidden}
+.thumb::before{content:"";position:absolute;width:170px;height:170px;border-radius:50%;background:rgba(255,255,255,.4)}
+.thumb .emo{position:relative;font-size:4.2rem;filter:drop-shadow(0 8px 10px rgba(0,0,0,.25));transition:transform .3s}
+.card:hover .emo{transform:scale(1.12) rotate(-4deg)}
+.t-outfit{background:linear-gradient(135deg,#dfe7ef,#b4c4d6)}
+.t-aksesoris{background:linear-gradient(135deg,#f6e8c8,#e0bb70)}
+.t-peralatan{background:linear-gradient(135deg,#d9e6dd,#a4c0af)}
+.badge{position:absolute;top:12px;left:12px;z-index:1;font-style:normal;font-family:'Archivo';font-size:.72rem;font-weight:800;padding:4px 10px;border-radius:20px;background:linear-gradient(135deg,#E3B35A,#C8963E);color:var(--charcoal)}
+.tag{background:linear-gradient(135deg,var(--charcoal),var(--navy))}
+.price{font-size:1.15rem}
+.steps-wrap{background:radial-gradient(500px 300px at 10% 0,rgba(200,150,62,.2),transparent 60%),linear-gradient(160deg,#14171A,var(--charcoal) 60%,var(--navy))}
+.step{padding:22px;border-radius:12px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08)}
+.step b{background:linear-gradient(135deg,#F0CF8A,#C8963E);box-shadow:0 0 0 6px rgba(200,150,62,.18)}
+.fact{background:linear-gradient(135deg,#fff,#faf4e6)}
+.filters button.active{background:linear-gradient(135deg,var(--charcoal),var(--navy))}
+.quotes{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px}
+.quote{position:relative;background:#fff;border:1px solid #e4e0d8;border-radius:12px;padding:26px}
+.quote::before{content:"“";position:absolute;top:6px;right:18px;font:800 5rem/1 'Archivo';color:rgba(200,150,62,.25)}
+.stars{color:var(--copper);letter-spacing:2px;margin-bottom:8px}
+.who{display:flex;gap:12px;align-items:center;margin-top:16px}
+.av{flex:none;width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Archivo';font-weight:800;color:#fff;background:linear-gradient(135deg,var(--navy),var(--charcoal))}
+.who strong{display:block;font-family:'Archivo';color:var(--charcoal);font-size:.95rem}
+.who small{color:var(--muted)}
+footer{background:linear-gradient(180deg,var(--charcoal),#101315);border-top:3px solid #C8963E}
+.overlay{backdrop-filter:blur(4px)}
+.modal{border-top:4px solid var(--copper);box-shadow:0 30px 70px rgba(0,0,0,.45)}
+.drawer-head{background:linear-gradient(135deg,var(--charcoal),var(--navy))}
+.page:not([hidden]){animation:pg .45s ease both}
+@keyframes pg{from{opacity:0;transform:translateY(10px)}}
+@media(prefers-reduced-motion:reduce){.page{animation:none!important}}
+.brand{display:inline-flex;align-items:center;gap:10px}
+.logo{width:44px;height:44px;object-fit:contain;filter:drop-shadow(0 2px 6px rgba(200,150,62,.35))}
+footer .logo{width:40px;height:40px}
+@media(max-width:480px){.logo{width:36px;height:36px}.brand{font-size:1.3rem}}
+</style>
+</head>
+<body>
+<main>
+<div class="page" id="page-home" hidden>
+<div class="hero">
+<div class="orbs" aria-hidden="true"><span>👔</span><span>⌚</span><span>🎒</span><span>🧥</span></div>
+    <div class="container">
+      <h1>Semua yang dibutuhkan pria untuk tampil percaya diri.</h1>
+      <p>Temukan outfit, aksesoris, dan peralatan pilihan, dikurasi khusus untuk pria.</p>
+      <form class="search" onsubmit="event.preventDefault();doSearch()">
+        <input data-role="q" type="text" placeholder="Cari jaket, jam tangan, tas..." aria-label="Cari produk">
+        <select data-role="cat" aria-label="Kategori">
+          <option value="">Semua kategori</option>
+          <option>Outfit</option>
+          <option>Aksesoris</option>
+          <option>Peralatan</option>
+        </select>
+        <button class="btn btn-primary" type="submit">Cari Produk</button>
+      </form>
+      <div class="stats">
+        <div><strong>1.200+</strong><span>Produk pilihan</span></div>
+        <div><strong>150+</strong><span>Brand pria</span></div>
+        <div><strong>30rb+</strong><span>Pelanggan puas</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="perks"><div class="container">
+  <div class="perk"><i>🚚</i><div><strong>Gratis ongkir</strong><span>Untuk belanja tertentu</span></div></div>
+  <div class="perk"><i>🔄</i><div><strong>Retur 7 hari</strong><span>Ukuran tidak pas? Tukar</span></div></div>
+  <div class="perk"><i>🛡️</i><div><strong>Produk original</strong><span>Dikurasi dari brand resmi</span></div></div>
+  <div class="perk"><i>💳</i><div><strong>Bayar fleksibel</strong><span>Transfer, e-wallet, COD</span></div></div>
+</div></div>
+<section>
+    <div class="container">
+      <div class="section-head">
+        <div><h2>Kategori Pilihan</h2><p>Mulai dari yang kamu butuhkan.</p></div>
+      </div>
+      <div class="cats">
+        <a href="#/outfit" class="cat c-outfit"><div class="ico">👔</div><h3>Outfit</h3><p>Kemeja, kaos, jaket, celana, setelan</p></a>
+        <a href="#/aksesoris" class="cat c-aksesoris"><div class="ico">⌚</div><h3>Aksesoris</h3><p>Jam tangan, ikat pinggang, topi, dompet</p></a>
+        <a href="#/peralatan" class="cat c-peralatan"><div class="ico">🎒</div><h3>Peralatan</h3><p>Grooming, tas, gadget, outdoor</p></a>
+      </div>
+    </div>
+  </section>
+
+  <section id="profil" style="padding-top:0">
+    <div class="container profile">
+      <div>
+        <h2>Profil Perusahaan Guyverse</h2>
+        <p>Guyverse adalah toko online yang didedikasikan khusus untuk pria. Kami mengumpulkan outfit, aksesoris, dan peralatan dari berbagai brand dalam satu tempat, supaya pria tidak perlu berpindah-pindah toko untuk tampil rapi.</p>
+        <p>Setiap produk kami seleksi berdasarkan kualitas bahan, kenyamanan, dan kemudahan dipadukan dalam keseharian.</p>
+        <a href="#/tentang" class="btn btn-primary">Selengkapnya Tentang Kami</a>
+      </div>
+      <div class="facts">
+        <div class="fact"><strong>2024</strong><span>Tahun berdiri</span></div>
+        <div class="fact"><strong>3 Kategori</strong><span>Outfit, aksesoris, peralatan</span></div>
+        <div class="fact"><strong>150+ Brand</strong><span>Mitra brand pria</span></div>
+        <div class="fact"><strong>30rb+</strong><span>Pelanggan terlayani</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="produk" style="padding-top:0">
+    <div class="container">
+      <div class="section-head">
+        <div><h2>Produk Terbaru</h2><p data-role="resultInfo">Koleksi yang paling banyak dicari minggu ini.</p></div>
+      </div>
+      <div class="grid" data-role="products"></div>
+    </div>
+  </section>
+
+  <section class="steps-wrap">
+    <div class="container">
+      <div class="section-head"><h2>Cara Belanja di Guyverse</h2></div>
+      <div class="steps">
+        <div class="step"><b>1</b><h3>Pilih produk</h3><p>Jelajahi kategori atau cari langsung barang yang kamu mau.</p></div>
+        <div class="step"><b>2</b><h3>Cek detail</h3><p>Lihat ukuran, bahan, dan ulasan dari pembeli lain.</p></div>
+        <div class="step"><b>3</b><h3>Checkout</h3><p>Bayar dengan transfer, e-wallet, atau COD.</p></div>
+        <div class="step"><b>4</b><h3>Terima di rumah</h3><p>Pesanan dikemas rapi dan dikirim ke alamatmu.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="tips">
+    <div class="container">
+      <div class="section-head">
+        <div><h2>Gaya &amp; Tips</h2><p>Panduan praktis untuk tampil rapi setiap hari.</p></div>
+        <a href="#/tips" class="btn btn-primary">Lihat Semua Artikel</a>
+      </div>
+      <div class="grid" data-role="articles" data-limit="3"></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-head"><div><h2>Kata Mereka</h2><p>Pengalaman pelanggan yang sudah berbelanja di Guyverse.</p></div></div>
+      <div class="quotes">
+        <div class="quote"><div class="stars">★★★★★</div><p>Kemejanya pas dan bahannya adem. Sekarang saya belanja outfit kerja cukup di satu tempat.</p><div class="who"><div class="av">RA</div><div><strong>Rizky A.</strong><small>Karyawan swasta</small></div></div></div>
+        <div class="quote"><div class="stars">★★★★★</div><p>Jam tangan dan ikat pinggangnya awet. Panduan di Gaya &amp; Tips membantu saya memadukannya.</p><div class="who"><div class="av">DP</div><div><strong>Dimas P.</strong><small>Desainer</small></div></div></div>
+        <div class="quote"><div class="stars">★★★★★</div><p>Pengiriman cepat dan ransel anti airnya benar-benar bisa dipakai hujan-hujanan.</p><div class="who"><div class="av">FH</div><div><strong>Fajar H.</strong><small>Mahasiswa</small></div></div></div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<div class="page" id="page-about" hidden>
+
+  <div class="about-hero"><div class="container">
+    <h1>Tentang Guyverse</h1>
+    <p>Tempat pria menemukan gaya, aksesoris, dan peralatan yang sesuai karakternya.</p>
+  </div></div>
+  <section><div class="container about-block">
+    <h2>Siapa Kami</h2>
+    <p>Guyverse lahir dari kebiasaan sederhana: sulit menemukan satu toko yang benar-benar fokus pada kebutuhan pria. Pakaian ada di satu tempat, jam tangan di tempat lain, perlengkapan grooming di tempat berbeda lagi.</p>
+    <p>Kami menyatukan semuanya. Di Guyverse kamu bisa mencari outfit untuk kerja dan santai, aksesoris untuk menyempurnakan penampilan, serta peralatan harian seperti tas, gadget, dan perlengkapan grooming.</p>
+    <p>Selain berjualan, kami menulis panduan gaya di halaman Gaya &amp; Tips agar kamu tahu cara memilih dan memadukan produk dengan percaya diri.</p>
+  </div></section>
+  <section class="steps-wrap"><div class="container">
+    <div class="section-head"><h2>Nilai Kami</h2></div>
+    <div class="steps">
+      <div class="step"><h3>Kualitas dulu</h3><p>Produk dipilih dari bahan dan jahitan, bukan sekadar tren.</p></div>
+      <div class="step"><h3>Harga jelas</h3><p>Tidak ada biaya tersembunyi saat checkout.</p></div>
+      <div class="step"><h3>Mudah dipadukan</h3><p>Koleksi kami dirancang agar cocok satu sama lain.</p></div>
+      <div class="step"><h3>Layanan responsif</h3><p>Tim kami siap membantu soal ukuran dan pengiriman.</p></div>
+    </div>
+  </div></section>
+
+</div>
+
+<div class="page" id="page-outfit" hidden>
+<div class="about-hero"><div class="container">
+    <h1>Outfit</h1>
+    <p>Kemeja, kaos, jaket, celana, dan setelan untuk setiap suasana.</p>
+  </div></div>
+  <section><div class="container">
+    <div class="section-head">
+      <div><h2>Koleksi Outfit</h2><p data-role="resultInfo" data-def="Pilihan terbaik untuk kebutuhanmu.">Pilihan terbaik untuk kebutuhanmu.</p></div>
+      <input data-role="pq" class="finder" type="search" placeholder="Cari di Outfit..." aria-label="Cari di Outfit">
+    </div>
+    <div class="grid" data-role="products" data-cat="Outfit"></div>
+  </div></section>
+  <section style="padding-top:0"><div class="container">
+    <div class="section-head">
+      <div><h2>Artikel Terkait</h2><p>Inspirasi memadukan outfit.</p></div>
+      <a href="#/tips" class="btn btn-primary">Lihat Semua Artikel</a>
+    </div>
+    <div class="grid" data-role="articles" data-cat="Outfit"></div>
+  </div></section>
+</div>
+
+<div class="page" id="page-aksesoris" hidden>
+<div class="about-hero"><div class="container">
+    <h1>Aksesoris</h1>
+    <p>Jam tangan, ikat pinggang, topi, dan dompet untuk menyempurnakan gayamu.</p>
+  </div></div>
+  <section><div class="container">
+    <div class="section-head">
+      <div><h2>Koleksi Aksesoris</h2><p data-role="resultInfo" data-def="Pilihan terbaik untuk kebutuhanmu.">Pilihan terbaik untuk kebutuhanmu.</p></div>
+      <input data-role="pq" class="finder" type="search" placeholder="Cari di Aksesoris..." aria-label="Cari di Aksesoris">
+    </div>
+    <div class="grid" data-role="products" data-cat="Aksesoris"></div>
+  </div></section>
+  <section style="padding-top:0"><div class="container">
+    <div class="section-head">
+      <div><h2>Artikel Terkait</h2><p>Tips memilih aksesoris.</p></div>
+      <a href="#/tips" class="btn btn-primary">Lihat Semua Artikel</a>
+    </div>
+    <div class="grid" data-role="articles" data-cat="Aksesoris"></div>
+  </div></section>
+</div>
+
+<div class="page" id="page-peralatan" hidden>
+<div class="about-hero"><div class="container">
+    <h1>Peralatan</h1>
+    <p>Grooming, tas, gadget, dan perlengkapan harian pria.</p>
+  </div></div>
+  <section><div class="container">
+    <div class="section-head">
+      <div><h2>Koleksi Peralatan</h2><p data-role="resultInfo" data-def="Pilihan terbaik untuk kebutuhanmu.">Pilihan terbaik untuk kebutuhanmu.</p></div>
+      <input data-role="pq" class="finder" type="search" placeholder="Cari di Peralatan..." aria-label="Cari di Peralatan">
+    </div>
+    <div class="grid" data-role="products" data-cat="Peralatan"></div>
+  </div></section>
+  <section style="padding-top:0"><div class="container">
+    <div class="section-head">
+      <div><h2>Artikel Terkait</h2><p>Panduan memilih peralatan.</p></div>
+      <a href="#/tips" class="btn btn-primary">Lihat Semua Artikel</a>
+    </div>
+    <div class="grid" data-role="articles" data-cat="Peralatan"></div>
+  </div></section>
+</div>
+
+<div class="page" id="page-tips" hidden>
+<div class="about-hero"><div class="container">
+    <h1>Gaya &amp; Tips</h1>
+    <p>Panduan praktis untuk memilih dan memadukan outfit, aksesoris, dan peralatan.</p>
+  </div></div>
+  <section><div class="container">
+    <div class="filters" data-role="filters">
+      <button class="active" data-f="Semua">Semua</button>
+      <button data-f="Outfit">Outfit</button>
+      <button data-f="Aksesoris">Aksesoris</button>
+      <button data-f="Peralatan">Peralatan</button>
+    </div>
+    <div class="grid" data-role="articles"></div>
+  </div></section>
+</div>
+</main>
+<script>
+/* Logo Guyverse (PNG 96px, 24 warna) */
+const LOGO="data:image/png;base64,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";
+document.querySelector('link[rel="icon"]').href=LOGO;
+</script>
+<script>
+/* Guyverse - skrip bersama untuk semua halaman */
+const NAV = [
+  ["#/beranda","Beranda","home"],
+  ["#/tentang","Tentang Kami","about"],
+  ["#/outfit","Outfit","outfit"],
+  ["#/aksesoris","Aksesoris","aksesoris"],
+  ["#/peralatan","Peralatan","peralatan"],
+  ["#/tips","Gaya &amp; Tips","tips"]
+];
+const products = [
+  {n:"Kemeja Oxford Slim Fit",c:"Outfit",p:329000,i:"👔",d:"Katun halus, nyaman untuk kerja dan santai."},
+  {n:"Jaket Bomber Hitam",c:"Outfit",p:549000,i:"🧥",d:"Potongan modern, cocok untuk malam hari."},
+  {n:"Celana Chino Navy",c:"Outfit",p:289000,i:"👖",d:"Bahan stretch, mudah dipadukan."},
+  {n:"Jam Tangan Minimalis",c:"Aksesoris",p:799000,i:"⌚",d:"Strap kulit, tahan percikan air."},
+  {n:"Ikat Pinggang Kulit",c:"Aksesoris",p:219000,i:"🪢",d:"Kulit sapi asli dengan gesper baja."},
+  {n:"Topi Baseball Washed",c:"Aksesoris",p:149000,i:"🧢",d:"Ukuran bisa diatur, warna tahan lama."},
+  {n:"Kit Grooming Lengkap",c:"Peralatan",p:359000,i:"🪒",d:"Pencukur, sisir, dan minyak jenggot."},
+  {n:"Ransel Urban Anti Air",c:"Peralatan",p:459000,i:"🎒",d:"Muat laptop 15 inci, banyak kantong."},
+  {n:"Power Bank 20.000 mAh",c:"Peralatan",p:299000,i:"🔋",d:"Pengisian cepat, bodi aluminium."}
+];
+const articles = [
+  {t:"5 Outfit Kasual untuk Kerja Hybrid",c:"Outfit",i:"👕",d:"Kombinasi kemeja, chino, dan sneakers yang tetap rapi."},
+  {t:"Cara Memilih Jam Tangan Sesuai Gaya",c:"Aksesoris",i:"⌚",d:"Ukuran case, warna strap, dan acara yang cocok."},
+  {t:"Perlengkapan Grooming Wajib Pria",c:"Peralatan",i:"🪒",d:"Daftar alat dasar agar penampilan selalu bersih."},
+  {t:"Panduan Mix and Match Warna Netral",c:"Outfit",i:"🧥",d:"Hitam, navy, abu, dan krem tanpa bingung."},
+  {t:"Ikat Pinggang dan Sepatu: Harus Senada?",c:"Aksesoris",i:"🪢",d:"Aturan sederhana agar tampilan konsisten."},
+  {t:"Tas Harian: Ransel atau Tote?",c:"Peralatan",i:"🎒",d:"Pilih sesuai rutinitas dan isi bawaanmu."}
+];
+const rp = n => "Rp " + n.toLocaleString("id-ID");
+const $ = id => document.getElementById(id);
+const R = r => document.querySelector('.page:not([hidden]) [data-role="'+r+'"]');
+const store = {
+  get(k, d){ try{ return JSON.parse(localStorage.getItem(k)) ?? d; }catch(e){ return d; } },
+  set(k, v){ try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){} }
+};
+
+/* ---------- Header, footer, keranjang, popup login (dipakai semua halaman) ---------- */
+function layout(){
+  const links = NAV.map(([h,t,k]) => `<li><a href="${h}" data-key="${k}">${t}</a></li>`).join("");
+  document.body.insertAdjacentHTML("afterbegin", `
+<header><div class="container nav">
+  <a href="#/beranda" class="brand"><img class="logo" src="${LOGO}" alt="" width="44" height="44">Guy<span>verse</span></a>
+  <button class="menu-toggle" id="menuBtn" aria-label="Buka menu">☰</button>
+  <nav id="nav"><ul>${links}</ul></nav>
+  <div class="nav-actions">
+    <button class="icon-btn" id="cartBtn" aria-label="Buka keranjang">🛒<span id="cartCount">0</span></button>
+    <button class="btn btn-primary" id="authBtn">Masuk</button>
+  </div>
+</div></header>`);
+  document.body.insertAdjacentHTML("beforeend", `
+<footer><div class="container">
+  <div class="foot">
+    <div><a href="#/beranda" class="brand"><img class="logo" src="${LOGO}" alt="" width="44" height="44">Guy<span>verse</span></a><p style="margin-top:10px;max-width:280px">Tempat belanja outfit, aksesoris, dan peralatan khusus pria.</p></div>
+    <div><h4>Belanja</h4><ul><li><a href="#/outfit">Outfit</a></li><li><a href="#/aksesoris">Aksesoris</a></li><li><a href="#/peralatan">Peralatan</a></li></ul></div>
+    <div><h4>Perusahaan</h4><ul><li><a href="#/tentang">Tentang Kami</a></li><li><a href="#/tips">Gaya &amp; Tips</a></li><li><a href="javascript:void(0)">Karier</a></li></ul></div>
+    <div><h4>Bantuan</h4><ul><li><a href="javascript:void(0)">Pengiriman</a></li><li><a href="javascript:void(0)">Pengembalian</a></li><li><a href="javascript:void(0)">Hubungi Kami</a></li></ul></div>
+  </div>
+  <p class="copy">© 2026 Guyverse. Semua hak dilindungi.</p>
+</div></footer>
+<aside class="drawer" id="drawer" hidden aria-label="Keranjang belanja">
+  <div class="drawer-head"><h3>Keranjang</h3><button class="close" onclick="toggleCart(false)" aria-label="Tutup keranjang">×</button></div>
+  <div id="cartItems"></div>
+  <div class="drawer-foot">
+    <div class="total"><span>Total</span><strong id="cartTotal">Rp 0</strong></div>
+    <button class="btn btn-primary" style="width:100%" onclick="checkout()">Checkout</button>
+  </div>
+</aside>
+<div class="overlay" id="authOverlay" hidden>
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="authTitle">
+    <button class="close" onclick="closeAuth()" aria-label="Tutup">×</button>
+    <h2 id="authTitle">Masuk ke Guyverse</h2>
+    <p class="note" id="authNote">Masuk untuk menyimpan keranjang dan checkout.</p>
+    <div class="tabs"><button type="button" id="tabLogin" class="active">Masuk</button><button type="button" id="tabReg">Daftar</button></div>
+    <form id="authForm">
+      <input id="aName" type="text" placeholder="Nama lengkap" hidden>
+      <input id="aEmail" type="email" placeholder="Email" required>
+      <input id="aPass" type="password" placeholder="Kata sandi (min. 6 karakter)" minlength="6" required>
+      <p class="err" id="authErr"></p>
+      <button class="btn btn-primary" id="authSubmit" style="width:100%">Masuk</button>
+    </form>
+  </div>
+</div>
+<div class="toast" id="toast" role="status"></div>`);
+  $("menuBtn").onclick = () => $("nav").classList.toggle("open");
+}
+
+function toast(msg){ const t = $("toast"); t.textContent = msg; t.classList.add("show"); clearTimeout(t._t); t._t = setTimeout(() => t.classList.remove("show"), 2800); }
+
+/* ---------- Login (demo front-end, data disimpan di browser) ---------- */
+let user = store.get("gv_user", null);
+let mode = "login";
+function renderAuthBtn(){ $("authBtn").textContent = user ? "Keluar" : "Masuk"; $("authBtn").title = user ? user.name : ""; }
+function setMode(m){
+  mode = m;
+  $("tabLogin").classList.toggle("active", m === "login");
+  $("tabReg").classList.toggle("active", m === "reg");
+  $("aName").hidden = m === "login"; $("aName").required = m === "reg";
+  $("authSubmit").textContent = m === "login" ? "Masuk" : "Buat Akun";
+  $("authTitle").textContent = m === "login" ? "Masuk ke Guyverse" : "Daftar Akun Guyverse";
+  $("authErr").textContent = "";
+}
+function openAuth(note){ setMode("login"); $("authNote").textContent = note || "Masuk untuk menyimpan keranjang dan checkout."; $("authOverlay").hidden = false; $("aEmail").focus(); }
+function closeAuth(){ $("authOverlay").hidden = true; $("authForm").reset(); }
+function bindAuth(){
+  $("tabLogin").onclick = () => setMode("login");
+  $("tabReg").onclick = () => setMode("reg");
+  $("authOverlay").addEventListener("click", e => { if(e.target.id === "authOverlay") closeAuth(); });
+  document.addEventListener("keydown", e => { if(e.key === "Escape"){ closeAuth(); toggleCart(false); } });
+  $("authForm").addEventListener("submit", e => {
+    e.preventDefault();
+    const email = $("aEmail").value.trim().toLowerCase(), pass = $("aPass").value;
+    const users = store.get("gv_users", []);
+    if(mode === "reg"){
+      if(users.some(u => u.email === email)){ $("authErr").textContent = "Email sudah terdaftar. Silakan masuk."; return; }
+      const u = {name: $("aName").value.trim(), email, pass};
+      users.push(u); store.set("gv_users", users); user = {name: u.name, email};
+    } else {
+      const u = users.find(u => u.email === email && u.pass === pass);
+      if(!u){ $("authErr").textContent = "Email atau kata sandi salah, atau akun belum terdaftar."; return; }
+      user = {name: u.name, email};
+    }
+    store.set("gv_user", user); renderAuthBtn(); closeAuth();
+    toast("Halo, " + user.name + "! Kamu sudah masuk.");
+    if(cart.length) toggleCart(true);
+  });
+  $("authBtn").onclick = () => {
+    if(user){ user = null; store.set("gv_user", null); renderAuthBtn(); toast("Kamu sudah keluar."); }
+    else openAuth();
+  };
+}
+
+/* ---------- Keranjang & checkout (tersimpan lintas halaman) ---------- */
+let cart = store.get("gv_cart", []);
+function saveCart(){ store.set("gv_cart", cart); renderCart(); }
+function addCart(i){
+  const it = cart.find(c => c.i === i);
+  it ? it.q++ : cart.push({i, q:1});
+  saveCart(); toast(products[i].n + " ditambahkan ke keranjang.");
+}
+function changeQty(i, d){
+  const it = cart.find(c => c.i === i); if(!it) return;
+  it.q += d; if(it.q <= 0) cart = cart.filter(c => c.i !== i);
+  saveCart();
+}
+function renderCart(){
+  $("cartCount").textContent = cart.reduce((a, c) => a + c.q, 0);
+  $("cartItems").innerHTML = cart.length ? cart.map(c => { const x = products[c.i]; return `
+    <div class="ci"><div class="e">${x.i}</div>
+      <div><strong>${x.n}</strong><br><small>${rp(x.p)}</small></div>
+      <div class="qty"><button onclick="changeQty(${c.i},-1)" aria-label="Kurangi">−</button> ${c.q} <button onclick="changeQty(${c.i},1)" aria-label="Tambah">+</button></div>
+    </div>`; }).join("") : '<p class="empty">Keranjang masih kosong. Tambahkan produk untuk mulai belanja.</p>';
+  $("cartTotal").textContent = rp(cart.reduce((a, c) => a + products[c.i].p * c.q, 0));
+}
+function toggleCart(open){ $("drawer").hidden = !open; }
+function checkout(){
+  if(!cart.length){ toast("Keranjang masih kosong."); return; }
+  if(!user){ toggleCart(false); openAuth("Kamu harus masuk terlebih dahulu untuk melakukan checkout."); return; }
+  const total = $("cartTotal").textContent;
+  cart = []; saveCart(); toggleCart(false);
+  toast("Pesanan berhasil dibuat (" + total + "). Terima kasih, " + user.name + "!");
+}
+
+/* ---------- Daftar produk & artikel ---------- */
+function renderProducts(list){
+  R("products").innerHTML = list.length ? list.map(x => `
+    <article class="card"><div class="thumb t-${x.c.toLowerCase()}"><span class="emo">${x.i}</span>${products.indexOf(x)%3===0?'<em class="badge">Terlaris</em>':''}</div>
+      <div class="card-body"><span class="tag">${x.c}</span><h3>${x.n}</h3><p>${x.d}</p>
+      <div class="card-foot"><span class="price">${rp(x.p)}</span><button class="btn btn-primary" style="padding:8px 14px" onclick="addCart(${products.indexOf(x)})">+ Keranjang</button></div></div>
+    </article>`).join("") : '<p class="empty">Produk tidak ditemukan. Coba kata kunci atau kategori lain.</p>';
+}
+function filterProducts(){   // halaman kategori: cari di dalam kategori
+  const cat = R("products").dataset.cat, q = (R("pq") ? R("pq").value : "").trim().toLowerCase();
+  const res = products.filter(x => (!cat || x.c === cat) && (!q || x.n.toLowerCase().includes(q)));
+  renderProducts(res);
+  if(R("resultInfo")) R("resultInfo").textContent = q ? res.length + " produk ditemukan" : (R("resultInfo").dataset.def || "");
+}
+function doSearch(){         // beranda: kolom pencarian di hero
+  const q = R("q").value.trim().toLowerCase(), c = R("cat").value;
+  const res = products.filter(x => (!c || x.c === c) && (!q || x.n.toLowerCase().includes(q)));
+  renderProducts(res);
+  R("resultInfo").textContent = res.length + " produk ditemukan";
+  $("produk").scrollIntoView();
+}
+function renderArticles(f){
+  const box = R("articles");
+  const cat = box.dataset.cat || f || "Semua";
+  let list = articles.filter(a => cat === "Semua" || a.c === cat);
+  if(box.dataset.limit) list = list.slice(0, +box.dataset.limit);
+  box.innerHTML = list.map(a => `
+    <article class="card"><div class="thumb t-${a.c.toLowerCase()}"><span class="emo">${a.i}</span></div>
+      <div class="card-body"><span class="tag">${a.c}</span><h3>${a.t}</h3><p>${a.d}</p>
+      <div class="card-foot"><span></span><a href="javascript:void(0)" class="link">Baca Selengkapnya</a></div></div>
+    </article>`).join("");
+}
+
+/* ---------- Perpindahan halaman (URL: #/beranda, #/tentang, dst.) ---------- */
+const PAGES = {beranda:"home", tentang:"about", outfit:"outfit", aksesoris:"aksesoris", peralatan:"peralatan", tips:"tips"};
+const TITLES = {home:"Gaya, Aksesoris & Peralatan Pria", about:"Tentang Kami", outfit:"Outfit", aksesoris:"Aksesoris", peralatan:"Peralatan", tips:"Gaya & Tips"};
+function route(){
+  let h = location.hash.replace(/^#\/?/, "");
+  if(!PAGES[h]) h = "beranda";
+  const key = PAGES[h];
+  document.querySelectorAll(".page").forEach(p => p.hidden = p.id !== "page-" + key);
+  document.querySelectorAll("#nav a").forEach(a => {
+    if(a.dataset.key === key) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current");
+  });
+  document.title = TITLES[key] + " - Guyverse";
+  $("nav").classList.remove("open");
+  if(R("pq")) R("pq").value = "";
+  if(R("products")) filterProducts();
+  if(R("articles")) renderArticles("Semua");
+  window.scrollTo(0, 0);
+}
+window.addEventListener("hashchange", route);
+
+/* ---------- Mulai ---------- */
+layout(); bindAuth(); renderAuthBtn(); renderCart();
+$("cartBtn").onclick = () => toggleCart($("drawer").hidden);
+document.addEventListener("input", e => { if(e.target.dataset.role === "pq") filterProducts(); });
+document.addEventListener("click", e => {
+  const b = e.target.closest('[data-role="filters"] button');
+  if(!b) return;
+  b.parentElement.querySelectorAll("button").forEach(x => x.classList.remove("active"));
+  b.classList.add("active");
+  renderArticles(b.dataset.f);
+});
+route();
+</script>
+</body>
+</html>
