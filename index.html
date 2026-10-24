@@ -146,8 +146,6 @@ footer a:hover{color:var(--copper)}
 nav a[aria-current="page"]{color:var(--copper)}
 .finder{padding:11px 14px;border:1px solid #cfcac0;border-radius:var(--radius);font:inherit;min-width:240px;background:#fff}
 
-
-
 /* ===== Peningkatan UI/UX ===== */
 body{background:radial-gradient(1100px 480px at 88% -4%,rgba(200,150,62,.12),transparent 60%),var(--bg)}
 header{background:rgba(27,31,35,.88);backdrop-filter:blur(12px);border-bottom:1px solid rgba(200,150,62,.25)}
@@ -235,6 +233,35 @@ footer .logo{width:40px;height:40px}
 .wa-fab:hover{transform:scale(1.08)}
 .wa-fab{text-decoration:none}
 @media(max-width:480px){.wa-fab{right:14px;bottom:14px}}
+.about-grid{display:grid;grid-template-columns:1.15fr 1fr;gap:56px;align-items:center}
+.about-logo{position:relative;width:min(320px,100%);aspect-ratio:1;margin:0 auto;border-radius:50%;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at 30% 25%,#34495e,#14171A 70%);box-shadow:0 30px 70px rgba(27,31,35,.35),0 0 0 10px rgba(200,150,62,.15),0 0 0 11px rgba(200,150,62,.55)}
+.about-logo img{width:84%;height:auto;filter:drop-shadow(0 6px 18px rgba(200,150,62,.4))}
+@media(max-width:820px){.about-grid{grid-template-columns:1fr;gap:36px}.about-logo{width:min(260px,76%)}}
+.btn-shopee{display:inline-flex;align-items:center;gap:5px;padding:6px 12px;line-height:1.3;border-radius:5px;font-family:'Archivo';font-weight:600;font-size:.85rem;color:#fff;background:linear-gradient(135deg,#DF3F20,#C42E0E);box-shadow:0 6px 14px rgba(223,63,32,.3);transition:transform .2s,box-shadow .2s}
+.btn-shopee:hover{transform:translateY(-1px);box-shadow:0 10px 20px rgba(223,63,32,.4)}
+.btn-shopee svg{width:14px;height:14px;flex:none}
+
+/* ===== Panel Admin ===== */
+.admin-wrap{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start}
+.admin-form,.admin-list{background:var(--card);border:1px solid #e4e0d8;border-left:4px solid var(--copper);border-radius:12px;padding:24px}
+.admin-form h2,.admin-list h2{font-family:'Archivo';font-size:1.25rem;color:var(--charcoal);margin-bottom:16px}
+.admin-form label{display:block;font-family:'Archivo';font-size:.85rem;font-weight:600;margin-bottom:4px;color:var(--charcoal)}
+.admin-form input,.admin-form select,.admin-form textarea{width:100%;padding:11px 12px;margin-bottom:12px;border:1px solid #cfcac0;border-radius:var(--radius);font-family:inherit;font-size:.95rem;background:#fff;color:var(--text)}
+.admin-form textarea{resize:vertical;min-height:70px}
+.image-input-group{display:flex;gap:10px;align-items:center;margin-bottom:12px;flex-wrap:wrap}
+.image-input-group input[type="url"]{flex:1;min-width:160px;margin-bottom:0}
+.image-input-group input[type="file"]{font-size:.82rem;padding:6px;flex:1;min-width:140px}
+.image-input-group span{color:var(--muted);font-size:.82rem;font-family:'Archivo'}
+#pPreview{margin-bottom:12px}
+#pPreview img{max-width:100%;max-height:180px;border-radius:6px;border:1px solid #e4e0d8}
+#adminProducts{max-height:600px;overflow-y:auto}
+.admin-lock{padding:70px 20px;text-align:center;background:var(--card);border:1px solid #e4e0d8;border-left:4px solid var(--copper);border-radius:12px}
+.admin-lock h2{font-family:'Archivo';font-size:1.8rem;margin-bottom:12px;color:var(--charcoal)}
+.admin-lock p{color:var(--muted);margin-bottom:20px}
+.thumb.has-img::before{display:none}
+.thumb.has-img .badge{z-index:3}
+.thumb.has-img img{width:100%;height:100%;object-fit:cover;display:block;position:relative;z-index:1}
+@media(max-width:820px){.admin-wrap{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -324,12 +351,12 @@ footer .logo{width:40px;height:40px}
     <h1>Tentang Guyverse</h1>
     <p>Tempat pria menemukan gaya, aksesoris, dan peralatan yang sesuai karakternya.</p>
   </div></div>
-  <section><div class="container about-block">
+  <section><div class="container about-block about-grid"><div>
     <h2>Siapa Kami</h2>
     <p>Guyverse lahir dari kebiasaan sederhana: sulit menemukan satu toko yang benar-benar fokus pada kebutuhan pria. Pakaian ada di satu tempat, jam tangan di tempat lain, perlengkapan grooming di tempat berbeda lagi.</p>
     <p>Kami menyatukan semuanya. Di Guyverse kamu bisa mencari outfit untuk kerja dan santai, aksesoris untuk menyempurnakan penampilan, serta peralatan harian seperti tas, gadget, dan perlengkapan grooming.</p>
     <p>Selain berjualan, kami menulis panduan gaya di halaman Gaya &amp; Tips agar kamu tahu cara memilih dan memadukan produk dengan percaya diri.</p>
-  </div></section>
+  </div><div class="about-logo"><img src="assets/TRANSPARAN.png" alt="Logo Guyverse" width="186" height="186" onerror="this.onerror=null;this.src=LOGO"></div></div></section>
   <section class="steps-wrap"><div class="container">
     <div class="section-head"><h2>Nilai Kami</h2></div>
     <div class="steps">
@@ -420,7 +447,72 @@ footer .logo{width:40px;height:40px}
     <div class="grid" data-role="articles"></div>
   </div></section>
 </div>
+
+<div class="page" id="page-admin" hidden>
+  <div class="about-hero"><div class="container">
+    <h1>Panel Admin</h1>
+    <p>Kelola produk Guyverse — tambah produk baru dengan foto dan link Shopee.</p>
+  </div></div>
+
+  <section><div class="container">
+    <div id="adminLock" class="admin-lock" hidden>
+      <h2>🔒 Akses Terbatas</h2>
+      <p>Halaman ini hanya dapat diakses oleh admin. Silakan masuk dengan akun admin.</p>
+      <button class="btn btn-primary" onclick="openAuth('Masuk sebagai admin untuk mengelola produk.')">Masuk sebagai Admin</button>
+    </div>
+
+    <div id="adminContent" hidden>
+      <div class="admin-wrap">
+        <div class="admin-form">
+          <h2>Tambah Produk Baru</h2>
+          <form id="addProductForm">
+            <label for="pCat">Kategori</label>
+            <select id="pCat" required>
+              <option value="">— Pilih kategori —</option>
+              <option value="Outfit">Outfit</option>
+              <option value="Aksesoris">Aksesoris</option>
+              <option value="Peralatan">Peralatan</option>
+            </select>
+
+            <label for="pName">Nama Produk</label>
+            <input id="pName" type="text" required maxlength="120" placeholder="Contoh: Kemeja Oxford Slim Fit">
+
+            <label for="pPrice">Harga (Rp)</label>
+            <input id="pPrice" type="number" required min="0" step="1000" placeholder="329000">
+
+            <label for="pShopee">Link Shopee</label>
+            <input id="pShopee" type="url" placeholder="https://shopee.co.id/...">
+
+            <label for="pEmoji">Emoji (fallback jika foto kosong)</label>
+            <input id="pEmoji" type="text" maxlength="4" placeholder="👔">
+
+            <label for="pDesc">Deskripsi</label>
+            <textarea id="pDesc" maxlength="300" placeholder="Deskripsi singkat produk..."></textarea>
+
+            <label>Foto Produk</label>
+            <div class="image-input-group">
+              <input id="pImage" type="url" placeholder="URL foto (https://...)">
+              <span>atau</span>
+              <input id="pImageFile" type="file" accept="image/*">
+            </div>
+            <div id="pPreview"></div>
+
+            <p class="err" id="pErr"></p>
+            <button class="btn btn-primary" id="pSubmit" type="submit" style="width:100%">Simpan Produk</button>
+          </form>
+        </div>
+
+        <div class="admin-list">
+          <h2>Daftar Produk</h2>
+          <p class="note" style="margin-bottom:12px">Klik × untuk menghapus produk.</p>
+          <div id="adminProducts"></div>
+        </div>
+      </div>
+    </div>
+  </div></section>
+</div>
 </main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
 <script>
 /* Logo Guyverse (PNG 96px, 24 warna) */
 const LOGO="data:image/png;base64,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";
@@ -429,6 +521,7 @@ document.querySelector('link[rel="icon"]').href=LOGO;
 <script>
 /* Guyverse - skrip bersama untuk semua halaman */
 const ICON_BM = '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12v18l-6-4-6 4z"/></svg>';
+const ICON_BAG = '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 8h14l-1 12H6L5 8z"/><path d="M9 8a3 3 0 016 0"/></svg>';
 const NAV = [
   ["#/beranda","Beranda","home"],
   ["#/tentang","Tentang Kami","about"],
@@ -437,16 +530,27 @@ const NAV = [
   ["#/peralatan","Peralatan","peralatan"],
   ["#/tips","Gaya &amp; Tips","tips"]
 ];
+
+/* ---------- Konfigurasi Admin ---------- */
+// Ganti dengan email admin (bisa lebih dari satu). Email harus terdaftar di Supabase Auth.
+const ADMIN_EMAILS = ["admin@guyverse.id", "email-kamu@gmail.com"];
+function isAdmin(){
+  if(!user) return false;
+  if(String(user.role || "").toLowerCase() === "admin") return true;
+  return ADMIN_EMAILS.map(e => e.toLowerCase()).includes(String(user.email || "").toLowerCase());
+}
+
+// Isi kolom shopee di setiap produk dengan link produk Shopee, contoh: shopee:"https://shopee.co.id/nama-toko/123456"
 const products = [
-  {n:"Kemeja Oxford Slim Fit",c:"Outfit",p:329000,i:"👔",d:"Katun halus, nyaman untuk kerja dan santai."},
-  {n:"Jaket Bomber Hitam",c:"Outfit",p:549000,i:"🧥",d:"Potongan modern, cocok untuk malam hari."},
-  {n:"Celana Chino Navy",c:"Outfit",p:289000,i:"👖",d:"Bahan stretch, mudah dipadukan."},
-  {n:"Jam Tangan Minimalis",c:"Aksesoris",p:799000,i:"⌚",d:"Strap kulit, tahan percikan air."},
-  {n:"Ikat Pinggang Kulit",c:"Aksesoris",p:219000,i:"🪢",d:"Kulit sapi asli dengan gesper baja."},
-  {n:"Topi Baseball Washed",c:"Aksesoris",p:149000,i:"🧢",d:"Ukuran bisa diatur, warna tahan lama."},
-  {n:"Kit Grooming Lengkap",c:"Peralatan",p:359000,i:"🪒",d:"Pencukur, sisir, dan minyak jenggot."},
-  {n:"Ransel Urban Anti Air",c:"Peralatan",p:459000,i:"🎒",d:"Muat laptop 15 inci, banyak kantong."},
-  {n:"Power Bank 20.000 mAh",c:"Peralatan",p:299000,i:"🔋",d:"Pengisian cepat, bodi aluminium."}
+  {n:"Kemeja Oxford Slim Fit",c:"Outfit",p:329000,i:"👔",d:"Katun halus, nyaman untuk kerja dan santai.",shopee:"",image_url:""},
+  {n:"Jaket Bomber Hitam",c:"Outfit",p:549000,i:"🧥",d:"Potongan modern, cocok untuk malam hari.",shopee:"",image_url:""},
+  {n:"Celana Chino Navy",c:"Outfit",p:289000,i:"👖",d:"Bahan stretch, mudah dipadukan.",shopee:"",image_url:""},
+  {n:"Jam Tangan Minimalis",c:"Aksesoris",p:799000,i:"⌚",d:"Strap kulit, tahan percikan air.",shopee:"",image_url:""},
+  {n:"Ikat Pinggang Kulit",c:"Aksesoris",p:219000,i:"🪢",d:"Kulit sapi asli dengan gesper baja.",shopee:"",image_url:""},
+  {n:"Topi Baseball Washed",c:"Aksesoris",p:149000,i:"🧢",d:"Ukuran bisa diatur, warna tahan lama.",shopee:"",image_url:""},
+  {n:"Kit Grooming Lengkap",c:"Peralatan",p:359000,i:"🪒",d:"Pencukur, sisir, dan minyak jenggot.",shopee:"",image_url:""},
+  {n:"Ransel Urban Anti Air",c:"Peralatan",p:459000,i:"🎒",d:"Muat laptop 15 inci, banyak kantong.",shopee:"",image_url:""},
+  {n:"Power Bank 20.000 mAh",c:"Peralatan",p:299000,i:"🔋",d:"Pengisian cepat, bodi aluminium.",shopee:"",image_url:""}
 ];
 const articles = [
   {t:"5 Outfit Kasual untuk Kerja Hybrid",c:"Outfit",i:"👕",d:"Kombinasi kemeja, chino, dan sneakers yang tetap rapi."},
@@ -464,9 +568,10 @@ const store = {
   set(k, v){ try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){} }
 };
 
-/* ---------- Header, footer, keranjang, popup login (dipakai semua halaman) ---------- */
+/* ---------- Header, footer, keranjang, popup login ---------- */
 function layout(){
-  const links = NAV.map(([h,t,k]) => `<li><a href="${h}" data-key="${k}">${t}</a></li>`).join("");
+  const links = NAV.map(([h,t,k]) => `<li><a href="${h}" data-key="${k}">${t}</a></li>`).join("")
+    + `<li id="adminNav" hidden><a href="#/admin" data-key="admin">🔐 Admin</a></li>`;
   document.body.insertAdjacentHTML("afterbegin", `
 <header><div class="container nav">
   <a href="#/beranda" class="brand"><img class="logo" src="${LOGO}" alt="" width="44" height="44"><em class="wm">Guy<span>verse</span></em></a>
@@ -513,10 +618,34 @@ function layout(){
 
 function toast(msg){ const t = $("toast"); t.textContent = msg; t.classList.add("show"); clearTimeout(t._t); t._t = setTimeout(() => t.classList.remove("show"), 2800); }
 
-/* ---------- Login (demo front-end, data disimpan di browser) ---------- */
-let user = store.get("gv_user", null);
+/* ---------- Supabase ---------- */
+const SUPABASE_URL = "https://yxexzogkuqfjbmnkwxgo.supabase.co";   // ganti dengan Project URL milikmu
+const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl4ZXh6b2drdXFmamJtbmt3eGdvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTI4MjA0NzQsImV4cCI6MjEwODM5NjQ3NH0.JzvsWPdkxX6jZtqotfbecGK46NCfVFaRTWSbWyYuHnQ";             // ganti dengan anon public key (BUKAN service_role)
+const sb = (window.supabase && !SUPABASE_URL.includes("PROJECT_ID"))
+  ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;   // null = mode demo lokal
+
+/* ---------- Login (Supabase Auth; mode demo bila Supabase belum diisi) ---------- */
+let user = sb ? null : store.get("gv_user", null);
 let mode = "login";
-function renderAuthBtn(){ $("authBtn").textContent = user ? "Keluar" : "Masuk"; $("authBtn").title = user ? user.name : ""; }
+function renderAuthBtn(){
+  $("authBtn").textContent = user ? "Keluar" : "Masuk";
+  $("authBtn").title = user ? user.name : "";
+  renderAdminNav();
+  toggleAdminLock();
+}
+function renderAdminNav(){
+  const el = document.getElementById("adminNav");
+  if(el) el.hidden = !isAdmin();
+}
+function toggleAdminLock(){
+  const lock = document.getElementById("adminLock");
+  const content = document.getElementById("adminContent");
+  if(!lock || !content) return;
+  const admin = isAdmin();
+  lock.hidden = admin;
+  content.hidden = !admin;
+  if(admin) renderAdminProducts();
+}
 function setMode(m){
   mode = m;
   $("tabLogin").classList.toggle("active", m === "login");
@@ -533,13 +662,26 @@ function bindAuth(){
   $("tabReg").onclick = () => setMode("reg");
   $("authOverlay").addEventListener("click", e => { if(e.target.id === "authOverlay") closeAuth(); });
   document.addEventListener("keydown", e => { if(e.key === "Escape"){ closeAuth(); toggleSaved(false); } });
-  $("authForm").addEventListener("submit", e => {
+  $("authForm").addEventListener("submit", async e => {
     e.preventDefault();
-    const email = $("aEmail").value.trim().toLowerCase(), pass = $("aPass").value;
+    const email = $("aEmail").value.trim().toLowerCase(), pass = $("aPass").value, name = $("aName").value.trim();
+    if(sb){
+      $("authSubmit").disabled = true;
+      const res = mode === "reg"
+        ? await sb.auth.signUp({email, password: pass, options: {data: {name}}})
+        : await sb.auth.signInWithPassword({email, password: pass});
+      $("authSubmit").disabled = false;
+      if(res.error){ $("authErr").textContent = authMsg(res.error.message); return; }
+      closeAuth();
+      if(!res.data.session){ toast("Akun dibuat. Cek email untuk konfirmasi, lalu masuk."); return; }
+      const m = res.data.user.user_metadata || {};
+      toast("Halo, " + (m.name || email.split("@")[0]) + "! Kamu sudah masuk.");
+      return;
+    }
     const users = store.get("gv_users", []);
     if(mode === "reg"){
       if(users.some(u => u.email === email)){ $("authErr").textContent = "Email sudah terdaftar. Silakan masuk."; return; }
-      const u = {name: $("aName").value.trim(), email, pass};
+      const u = {name, email, pass};
       users.push(u); store.set("gv_users", users); user = {name: u.name, email};
     } else {
       const u = users.find(u => u.email === email && u.pass === pass);
@@ -549,13 +691,21 @@ function bindAuth(){
     store.set("gv_user", user); renderAuthBtn(); closeAuth();
     toast("Halo, " + user.name + "! Kamu sudah masuk.");
   });
-  $("authBtn").onclick = () => {
-    if(user){ user = null; store.set("gv_user", null); renderAuthBtn(); toast("Kamu sudah keluar."); }
-    else openAuth();
+  $("authBtn").onclick = async () => {
+    if(!user){ openAuth(); return; }
+    if(sb){ await sb.auth.signOut(); return; }
+    user = null; store.set("gv_user", null); renderAuthBtn(); toast("Kamu sudah keluar.");
   };
 }
+function authMsg(m){
+  if(/invalid login/i.test(m)) return "Email atau kata sandi salah.";
+  if(/already registered/i.test(m)) return "Email sudah terdaftar. Silakan masuk.";
+  if(/not confirmed/i.test(m)) return "Email belum dikonfirmasi. Cek kotak masukmu.";
+  if(/at least 6/i.test(m)) return "Kata sandi minimal 6 karakter.";
+  return m;
+}
 
-/* ---------- Simpan produk (tersimpan di browser, lintas halaman) ---------- */
+/* ---------- Simpan produk ---------- */
 let saved = store.get("gv_saved", []);
 function persistSaved(){ store.set("gv_saved", saved); renderSaved(); }
 function syncButtons(){
@@ -567,10 +717,10 @@ function syncButtons(){
 function toggleSave(i){
   const on = saved.includes(i);
   saved = on ? saved.filter(x => x !== i) : [...saved, i];
-  persistSaved(); syncButtons();
+  persistSaved(); syncButtons(); dbSave(i, !on);
   toast(products[i].n + (on ? " dihapus dari simpanan." : " disimpan."));
 }
-function clearSaved(){ saved = []; persistSaved(); syncButtons(); }
+function clearSaved(){ const old = [...saved]; saved = []; persistSaved(); syncButtons(); old.forEach(i => dbSave(i, false)); }
 function renderSaved(){
   $("savedCount").textContent = saved.length;
   $("savedItems").innerHTML = saved.length ? saved.map(i => { const x = products[i]; return `
@@ -581,22 +731,92 @@ function renderSaved(){
 }
 function toggleSaved(open){ $("drawer").hidden = !open; }
 
-/* ---------- Daftar produk & artikel ---------- */
-function renderProducts(list){
-  R("products").innerHTML = list.length ? list.map(x => `
-    <article class="card"><div class="thumb t-${x.c.toLowerCase()}"><span class="emo">${x.i}</span>${products.indexOf(x)%3===0?'<em class="badge">Terlaris</em>':''}<button class="save${saved.includes(products.indexOf(x))?' on':''}" data-i="${products.indexOf(x)}" aria-pressed="${saved.includes(products.indexOf(x))}" aria-label="Simpan ${x.n}" onclick="toggleSave(${products.indexOf(x)})">${ICON_BM}</button></div>
-      <div class="card-body"><span class="tag">${x.c}</span><h3>${x.n}</h3><p>${x.d}</p>
-      <div class="card-foot"><span class="price">${rp(x.p)}</span><a href="javascript:void(0)" class="link">Lihat Detail</a></div></div>
-    </article>`).join("") : '<p class="empty">Produk tidak ditemukan. Coba kata kunci atau kategori lain.</p>';
+/* ---------- Sinkronisasi Supabase ---------- */
+async function dbSave(i, add){
+  if(!sb || !user || !products[i] || !products[i].id) return;
+  const id = products[i].id;
+  const {error} = add ? await sb.from("saved_items").insert({product_id: id})
+                      : await sb.from("saved_items").delete().eq("product_id", id);
+  if(error && error.code !== "23505") toast("Gagal menyinkronkan simpanan: " + error.message);
 }
-function filterProducts(){   // halaman kategori: cari di dalam kategori
+async function syncSaved(){
+  if(!sb || !user) return;
+  const {data, error} = await sb.from("saved_items").select("product_id");
+  if(error){ toast("Gagal memuat simpanan: " + error.message); return; }
+  const ids = new Set(data.map(r => r.product_id));
+  saved.forEach(i => { const id = products[i] && products[i].id; if(id && !ids.has(id)){ ids.add(id); dbSave(i, true); } });
+  saved = products.map((x, i) => ids.has(x.id) ? i : -1).filter(i => i >= 0);
+  persistSaved(); syncButtons();
+}
+async function loadData(){
+  const [p, a] = await Promise.all([
+    sb.from("products").select("*").order("sort_order"),
+    sb.from("articles").select("*").order("sort_order")
+  ]);
+  if(!p.error && p.data && p.data.length){
+    products.length = 0;
+    p.data.forEach(r => products.push({id:r.id, n:r.name, c:r.category, p:r.price, i:r.emoji || "🛍️", d:r.description || "", shopee:r.shopee_url || "", image_url:r.image_url || ""}));
+    saved = saved.filter(i => i < products.length);
+  } else if(p.error) console.warn("Supabase products:", p.error.message);
+  if(!a.error && a.data && a.data.length){
+    articles.length = 0;
+    a.data.forEach(r => articles.push({t:r.title, c:r.category, i:r.emoji || "📰", d:r.summary || ""}));
+  } else if(a.error) console.warn("Supabase articles:", a.error.message);
+  renderSaved();
+  if(R("products")) filterProducts();
+  if(R("articles")){ const act = document.querySelector('.page:not([hidden]) [data-role="filters"] .active'); renderArticles(act ? act.dataset.f : "Semua"); }
+}
+async function initData(){
+  if(!sb) return;
+  await loadData();
+  sb.auth.onAuthStateChange((event, session) => {
+    const u = session && session.user;
+    user = u ? {
+      name: (u.user_metadata && u.user_metadata.name) || u.email.split("@")[0],
+      email: u.email,
+      role: (u.user_metadata && u.user_metadata.role) || ""
+    } : null;
+    renderAuthBtn();
+    setTimeout(async () => {
+      if(user && (event === "INITIAL_SESSION" || event === "SIGNED_IN")) await syncSaved();
+      if(event === "SIGNED_OUT"){ saved = []; persistSaved(); syncButtons(); toast("Kamu sudah keluar."); }
+    }, 0);
+  });
+}
+
+/* ---------- Daftar produk & artikel ---------- */
+function shopeeBtn(x){
+  const ok = !!x.shopee;
+  return `<a class="btn-shopee" href="${ok ? x.shopee : "javascript:void(0)"}"${ok ? ' target="_blank" rel="noopener"' : ' onclick="toast(\'Link Shopee untuk produk ini belum tersedia.\')"'} aria-label="Beli ${x.n} di Shopee">${ICON_BAG}Checkout</a>`;
+}
+function renderProducts(list){
+  R("products").innerHTML = list.length ? list.map(x => {
+    const idx = products.indexOf(x);
+    const hasImg = !!x.image_url;
+    const thumbInner = hasImg
+      ? `<img src="${x.image_url}" alt="${x.n}">`
+      : `<span class="emo">${x.i}</span>`;
+    return `
+    <article class="card">
+      <div class="thumb t-${x.c.toLowerCase()}${hasImg ? ' has-img' : ''}">
+        ${thumbInner}
+        ${idx%3===0 ? '<em class="badge">Terlaris</em>' : ''}
+        <button class="save${saved.includes(idx)?' on':''}" data-i="${idx}" aria-pressed="${saved.includes(idx)}" aria-label="Simpan ${x.n}" onclick="toggleSave(${idx})">${ICON_BM}</button>
+      </div>
+      <div class="card-body"><span class="tag">${x.c}</span><h3>${x.n}</h3><p>${x.d}</p>
+        <div class="card-foot"><span class="price">${rp(x.p)}</span>${shopeeBtn(x)}</div>
+      </div>
+    </article>`;
+  }).join("") : '<p class="empty">Produk tidak ditemukan. Coba kata kunci atau kategori lain.</p>';
+}
+function filterProducts(){
   const cat = R("products").dataset.cat, q = (R("pq") ? R("pq").value : "").trim().toLowerCase();
   const res = products.filter(x => (!cat || x.c === cat) && (!q || x.n.toLowerCase().includes(q)));
   renderProducts(res);
   if(R("resultInfo")) R("resultInfo").textContent = q ? res.length + " produk ditemukan" : (R("resultInfo").dataset.def || "");
 }
 let pendingQ = "";
-function doSearch(){         // beranda: buka halaman kategori yang cocok
+function doSearch(){
   const q = R("q").value.trim().toLowerCase(), c = R("cat").value;
   const hit = products.filter(x => (!c || x.c === c) && (!q || x.n.toLowerCase().includes(q)));
   if(!hit.length){ toast("Produk tidak ditemukan. Coba kata kunci atau kategori lain."); return; }
@@ -615,9 +835,134 @@ function renderArticles(f){
     </article>`).join("");
 }
 
-/* ---------- Perpindahan halaman (URL: #/beranda, #/tentang, dst.) ---------- */
-const PAGES = {beranda:"home", tentang:"about", outfit:"outfit", aksesoris:"aksesoris", peralatan:"peralatan", tips:"tips"};
-const TITLES = {home:"Gaya, Aksesoris & Peralatan Pria", about:"Tentang Kami", outfit:"Outfit", aksesoris:"Aksesoris", peralatan:"Peralatan", tips:"Gaya & Tips"};
+/* ---------- Panel Admin ---------- */
+function renderAdminProducts(){
+  const box = document.getElementById("adminProducts");
+  if(!box) return;
+  if(!isAdmin()){ box.innerHTML = '<p class="empty">Akses ditolak.</p>'; return; }
+  box.innerHTML = products.length ? products.map((x,i) => {
+    const thumb = x.image_url
+      ? `<img src="${x.image_url}" alt="" style="width:44px;height:44px;object-fit:cover;border-radius:4px">`
+      : x.i;
+    return `
+      <div class="ci">
+        <div class="e">${thumb}</div>
+        <div><strong>${x.n}</strong><br><small>${x.c} · ${rp(x.p)}</small></div>
+        <button class="rm" onclick="deleteProduct(${i})" aria-label="Hapus ${x.n}">×</button>
+      </div>`;
+  }).join("") : '<p class="empty">Belum ada produk.</p>';
+}
+
+async function addProduct(e){
+  e.preventDefault();
+  if(!isAdmin()){ toast("Hanya admin yang dapat menambah produk."); return; }
+
+  const cat   = document.getElementById("pCat").value;
+  const name  = document.getElementById("pName").value.trim();
+  const price = +document.getElementById("pPrice").value;
+  const shopee= document.getElementById("pShopee").value.trim();
+  const emoji = document.getElementById("pEmoji").value.trim() || "🛍️";
+  const desc  = document.getElementById("pDesc").value.trim();
+  let image   = document.getElementById("pImage").value.trim();
+  const file  = document.getElementById("pImageFile").files[0];
+  const btn   = document.getElementById("pSubmit");
+  const errEl = document.getElementById("pErr");
+
+  errEl.textContent = "";
+  if(!cat || !name || !(price >= 0)){
+    errEl.textContent = "Kategori, nama produk, dan harga wajib diisi.";
+    return;
+  }
+
+  const newProduct = {n:name, c:cat, p:price, i:emoji, d:desc, shopee, image_url:image};
+
+  if(!sb){
+    products.push(newProduct);
+    e.target.reset();
+    document.getElementById("pPreview").innerHTML = "";
+    renderAdminProducts(); renderSaved();
+    if(R("products")) filterProducts();
+    toast("Produk ditambahkan (mode demo — tidak tersimpan permanen).");
+    return;
+  }
+
+  btn.disabled = true; btn.textContent = "Menyimpan...";
+  try{
+    if(file){
+      const ext  = (file.name.split(".").pop() || "jpg").toLowerCase();
+      const path = `products/${Date.now()}-${Math.random().toString(36).slice(2,8)}.${ext}`;
+      const {error: upErr} = await sb.storage.from("products")
+        .upload(path, file, { upsert:false, cacheControl:"3600" });
+      if(upErr) throw new Error("Upload foto: " + upErr.message);
+      const { data: pub } = sb.storage.from("products").getPublicUrl(path);
+      image = pub.publicUrl;
+      newProduct.image_url = image;
+    }
+
+    const { data, error } = await sb.from("products").insert({
+      name, category: cat, price,
+      shopee_url: shopee,
+      emoji,
+      description: desc,
+      image_url: image || null
+    }).select().single();
+
+    if(error) throw new Error("Simpan produk: " + error.message);
+
+    newProduct.id = data.id;
+    products.push(newProduct);
+
+    e.target.reset();
+    document.getElementById("pPreview").innerHTML = "";
+    renderAdminProducts(); renderSaved();
+    if(R("products")) filterProducts();
+    toast("Produk berhasil ditambahkan!");
+  } catch(err){
+    errEl.textContent = err.message;
+  } finally {
+    btn.disabled = false; btn.textContent = "Simpan Produk";
+  }
+}
+
+async function deleteProduct(i){
+  if(!isAdmin()) return;
+  const p = products[i];
+  if(!p) return;
+  if(!confirm(`Hapus produk "${p.n}"?`)) return;
+
+  if(sb && p.id){
+    const { error } = await sb.from("products").delete().eq("id", p.id);
+    if(error){ toast("Gagal hapus: " + error.message); return; }
+  }
+
+  products.splice(i, 1);
+  saved = saved.filter(x => x !== i).map(x => x > i ? x - 1 : x);
+  persistSaved();
+  renderAdminProducts();
+  if(R("products")) filterProducts();
+  toast("Produk dihapus.");
+}
+
+function updatePreview(){
+  const prev = document.getElementById("pPreview");
+  if(!prev) return;
+  const url  = document.getElementById("pImage").value.trim();
+  const file = document.getElementById("pImageFile").files[0];
+  const src  = file ? URL.createObjectURL(file) : url;
+  prev.innerHTML = src ? `<img src="${src}" alt="Pratinjau">` : "";
+}
+
+function bindAdmin(){
+  const form = document.getElementById("addProductForm");
+  if(!form) return;
+  form.addEventListener("submit", addProduct);
+  document.getElementById("pImage").addEventListener("input", updatePreview);
+  document.getElementById("pImageFile").addEventListener("change", updatePreview);
+}
+
+/* ---------- Routing ---------- */
+const PAGES  = {beranda:"home", tentang:"about", outfit:"outfit", aksesoris:"aksesoris", peralatan:"peralatan", tips:"tips", admin:"admin"};
+const TITLES = {home:"Gaya, Aksesoris & Peralatan Pria", about:"Tentang Kami", outfit:"Outfit", aksesoris:"Aksesoris", peralatan:"Peralatan", tips:"Gaya & Tips", admin:"Panel Admin"};
 function route(){
   let h = location.hash.replace(/^#\/?/, "");
   if(!PAGES[h]) h = "beranda";
@@ -631,21 +976,23 @@ function route(){
   if(R("pq")){ R("pq").value = pendingQ; pendingQ = ""; }
   if(R("products")) filterProducts();
   if(R("articles")) renderArticles("Semua");
+  if(key === "admin") toggleAdminLock();
   window.scrollTo(0, 0);
 }
 window.addEventListener("hashchange", route);
 
-/* ---------- Pop up WhatsApp admin ---------- */
-const WA_NUMBER = "6288215210931";   // 0882-1521-0931 dalam format internasional
+/* ---------- WhatsApp admin ---------- */
+const WA_NUMBER = "6288215210931";
 const WA_ICON = '<svg viewBox="0 0 24 24" width="30" height="30" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>';
 const WA_LINK = "https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent("Halo Admin Guyverse, saya butuh bantuan.");
-function initWA(){   // tombol melayang: langsung membuka WhatsApp admin
+function initWA(){
   document.body.insertAdjacentHTML("beforeend",
     `<a class="wa-fab" href="${WA_LINK}" target="_blank" rel="noopener" aria-label="Hubungi admin lewat WhatsApp" title="Hubungi admin lewat WhatsApp">${WA_ICON}</a>`);
 }
 
 /* ---------- Mulai ---------- */
-layout(); bindAuth(); initWA(); renderAuthBtn(); renderSaved();
+layout(); bindAuth(); initWA();
+document.querySelectorAll("img[data-logo]").forEach(i => i.src = LOGO); renderAuthBtn(); renderSaved();
 $("savedBtn").onclick = () => toggleSaved($("drawer").hidden);
 document.addEventListener("input", e => { if(e.target.dataset.role === "pq") filterProducts(); });
 document.addEventListener("click", e => {
@@ -655,7 +1002,9 @@ document.addEventListener("click", e => {
   b.classList.add("active");
   renderArticles(b.dataset.f);
 });
+bindAdmin();
 route();
+initData();
 </script>
 </body>
 </html>
