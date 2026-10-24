@@ -121,7 +121,7 @@ footer a:hover{color:var(--copper)}
 .drawer{position:fixed;top:0;right:0;bottom:0;width:min(400px,100%);background:#fff;z-index:90;display:flex;flex-direction:column;box-shadow:-8px 0 30px rgba(0,0,0,.25)}
 .drawer-head{display:flex;justify-content:space-between;align-items:center;padding:18px 20px;background:var(--charcoal);color:#fff}
 .drawer-head .close{position:static;color:#fff}
-#cartItems{flex:1;overflow:auto;padding:12px 20px}
+#savedItems{flex:1;overflow:auto;padding:12px 20px}
 .ci{display:flex;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid #eee}
 .ci .e{font-size:2rem}
 .ci div:nth-child(2){flex:1}
@@ -169,12 +169,6 @@ nav a:hover::after,nav a[aria-current="page"]::after{width:100%}
 .orbs span:nth-child(3){bottom:10px;left:0;transform:rotate(6deg)}
 .orbs span:nth-child(4){bottom:0;right:40px;transform:rotate(-6deg)}
 @media(max-width:1100px){.orbs{display:none}}
-.perks{background:#fff;border-bottom:1px solid #e4e0d8}
-.perks .container{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:8px}
-.perk{display:flex;gap:12px;align-items:center;padding:20px 8px}
-.perk i{font-style:normal;font-size:1.5rem;flex:none;width:48px;height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#f6e6c4,#e9c981)}
-.perk strong{display:block;font-family:'Archivo';color:var(--charcoal);font-size:.95rem}
-.perk span{color:var(--muted);font-size:.85rem}
 .section-head h2{position:relative;padding-bottom:12px}
 .section-head h2::after{content:"";position:absolute;left:0;bottom:0;width:56px;height:4px;border-radius:2px;background:linear-gradient(90deg,var(--copper),#f0cf8a)}
 .cat{position:relative;overflow:hidden;min-height:190px;border:1px solid rgba(200,150,62,.25);transition:transform .25s,box-shadow .25s,border-color .25s}
@@ -221,13 +215,33 @@ footer{background:linear-gradient(180deg,var(--charcoal),#101315);border-top:3px
 .logo{width:44px;height:44px;object-fit:contain;filter:drop-shadow(0 2px 6px rgba(200,150,62,.35))}
 footer .logo{width:40px;height:40px}
 @media(max-width:480px){.logo{width:36px;height:36px}.brand{font-size:1.3rem}}
+.wm{font-style:normal;font-weight:inherit;white-space:nowrap}
+.orbs{width:400px;height:460px}
+.orbs span{width:150px;height:190px;padding:6px;font-size:3.4rem;border-radius:28px}
+.orbs span:nth-child(1){top:0;left:20px}
+.orbs span:nth-child(2){top:44px;right:0}
+.orbs span:nth-child(3){bottom:24px;left:0}
+.orbs span:nth-child(4){bottom:0;right:30px}
+.orbs img{display:block;width:100%;height:100%;object-fit:cover;object-position:center top;border-radius:22px}
+@media(max-width:1199px){.orbs{display:none}}
+.icon-btn{display:inline-flex;align-items:center;gap:6px}
+.save{position:absolute;top:12px;right:12px;z-index:2;width:38px;height:38px;border-radius:50%;border:1px solid rgba(27,31,35,.12);background:rgba(255,255,255,.92);color:var(--charcoal);display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,.18);transition:transform .2s,background .2s}
+.save:hover{transform:scale(1.1)}
+.save.on{background:linear-gradient(135deg,#E3B35A,#C8963E);border-color:transparent}
+.save.on svg{fill:currentColor}
+.ci .rm{background:none;border:0;font-size:1.5rem;line-height:1;color:var(--muted);cursor:pointer;padding:4px 8px}
+.ci .rm:hover{color:#b3261e}
+.wa-fab{position:fixed;right:22px;bottom:22px;z-index:80;width:60px;height:60px;border-radius:50%;border:0;cursor:pointer;background:linear-gradient(135deg,#1fb862,#0b6b5f);color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 24px rgba(11,107,95,.45);transition:transform .2s}
+.wa-fab:hover{transform:scale(1.08)}
+.wa-fab{text-decoration:none}
+@media(max-width:480px){.wa-fab{right:14px;bottom:14px}}
 </style>
 </head>
 <body>
 <main>
 <div class="page" id="page-home" hidden>
 <div class="hero">
-<div class="orbs" aria-hidden="true"><span>👔</span><span>⌚</span><span>🎒</span><span>🧥</span></div>
+<div class="orbs" aria-hidden="true"><span><img src="assets/O1.png" alt="" onerror="this.replaceWith('👔')"></span><span><img src="assets/O2.png" alt="" onerror="this.replaceWith('⌚')"></span><span><img src="assets/O3.png" alt="" onerror="this.replaceWith('🎒')"></span><span><img src="assets/O4.png" alt="" onerror="this.replaceWith('🧥')"></span></div>
     <div class="container">
       <h1>Semua yang dibutuhkan pria untuk tampil percaya diri.</h1>
       <p>Temukan outfit, aksesoris, dan peralatan pilihan, dikurasi khusus untuk pria.</p>
@@ -249,13 +263,7 @@ footer .logo{width:40px;height:40px}
     </div>
   </div>
 
-  <div class="perks"><div class="container">
-  <div class="perk"><i>🚚</i><div><strong>Gratis ongkir</strong><span>Untuk belanja tertentu</span></div></div>
-  <div class="perk"><i>🔄</i><div><strong>Retur 7 hari</strong><span>Ukuran tidak pas? Tukar</span></div></div>
-  <div class="perk"><i>🛡️</i><div><strong>Produk original</strong><span>Dikurasi dari brand resmi</span></div></div>
-  <div class="perk"><i>💳</i><div><strong>Bayar fleksibel</strong><span>Transfer, e-wallet, COD</span></div></div>
-</div></div>
-<section>
+  <section>
     <div class="container">
       <div class="section-head">
         <div><h2>Kategori Pilihan</h2><p>Mulai dari yang kamu butuhkan.</p></div>
@@ -285,34 +293,15 @@ footer .logo{width:40px;height:40px}
     </div>
   </section>
 
-  <section id="produk" style="padding-top:0">
-    <div class="container">
-      <div class="section-head">
-        <div><h2>Produk Terbaru</h2><p data-role="resultInfo">Koleksi yang paling banyak dicari minggu ini.</p></div>
-      </div>
-      <div class="grid" data-role="products"></div>
-    </div>
-  </section>
-
   <section class="steps-wrap">
     <div class="container">
       <div class="section-head"><h2>Cara Belanja di Guyverse</h2></div>
       <div class="steps">
         <div class="step"><b>1</b><h3>Pilih produk</h3><p>Jelajahi kategori atau cari langsung barang yang kamu mau.</p></div>
         <div class="step"><b>2</b><h3>Cek detail</h3><p>Lihat ukuran, bahan, dan ulasan dari pembeli lain.</p></div>
-        <div class="step"><b>3</b><h3>Checkout</h3><p>Bayar dengan transfer, e-wallet, atau COD.</p></div>
+        <div class="step"><b>3</b><h3>Simpan favorit</h3><p>Tekan ikon simpan agar produk mudah ditemukan lagi.</p></div>
         <div class="step"><b>4</b><h3>Terima di rumah</h3><p>Pesanan dikemas rapi dan dikirim ke alamatmu.</p></div>
       </div>
-    </div>
-  </section>
-
-  <section id="tips">
-    <div class="container">
-      <div class="section-head">
-        <div><h2>Gaya &amp; Tips</h2><p>Panduan praktis untuk tampil rapi setiap hari.</p></div>
-        <a href="#/tips" class="btn btn-primary">Lihat Semua Artikel</a>
-      </div>
-      <div class="grid" data-role="articles" data-limit="3"></div>
     </div>
   </section>
 
@@ -345,7 +334,7 @@ footer .logo{width:40px;height:40px}
     <div class="section-head"><h2>Nilai Kami</h2></div>
     <div class="steps">
       <div class="step"><h3>Kualitas dulu</h3><p>Produk dipilih dari bahan dan jahitan, bukan sekadar tren.</p></div>
-      <div class="step"><h3>Harga jelas</h3><p>Tidak ada biaya tersembunyi saat checkout.</p></div>
+      <div class="step"><h3>Harga jelas</h3><p>Harga ditampilkan apa adanya, tanpa biaya tersembunyi.</p></div>
       <div class="step"><h3>Mudah dipadukan</h3><p>Koleksi kami dirancang agar cocok satu sama lain.</p></div>
       <div class="step"><h3>Layanan responsif</h3><p>Tim kami siap membantu soal ukuran dan pengiriman.</p></div>
     </div>
@@ -439,6 +428,7 @@ document.querySelector('link[rel="icon"]').href=LOGO;
 </script>
 <script>
 /* Guyverse - skrip bersama untuk semua halaman */
+const ICON_BM = '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h12v18l-6-4-6 4z"/></svg>';
 const NAV = [
   ["#/beranda","Beranda","home"],
   ["#/tentang","Tentang Kami","about"],
@@ -479,37 +469,34 @@ function layout(){
   const links = NAV.map(([h,t,k]) => `<li><a href="${h}" data-key="${k}">${t}</a></li>`).join("");
   document.body.insertAdjacentHTML("afterbegin", `
 <header><div class="container nav">
-  <a href="#/beranda" class="brand"><img class="logo" src="${LOGO}" alt="" width="44" height="44">Guy<span>verse</span></a>
+  <a href="#/beranda" class="brand"><img class="logo" src="${LOGO}" alt="" width="44" height="44"><em class="wm">Guy<span>verse</span></em></a>
   <button class="menu-toggle" id="menuBtn" aria-label="Buka menu">☰</button>
   <nav id="nav"><ul>${links}</ul></nav>
   <div class="nav-actions">
-    <button class="icon-btn" id="cartBtn" aria-label="Buka keranjang">🛒<span id="cartCount">0</span></button>
+    <button class="icon-btn" id="savedBtn" aria-label="Buka daftar tersimpan">${ICON_BM}<span id="savedCount">0</span></button>
     <button class="btn btn-primary" id="authBtn">Masuk</button>
   </div>
 </div></header>`);
   document.body.insertAdjacentHTML("beforeend", `
 <footer><div class="container">
   <div class="foot">
-    <div><a href="#/beranda" class="brand"><img class="logo" src="${LOGO}" alt="" width="44" height="44">Guy<span>verse</span></a><p style="margin-top:10px;max-width:280px">Tempat belanja outfit, aksesoris, dan peralatan khusus pria.</p></div>
+    <div><a href="#/beranda" class="brand"><img class="logo" src="${LOGO}" alt="" width="44" height="44"><em class="wm">Guy<span>verse</span></em></a><p style="margin-top:10px;max-width:280px">Tempat belanja outfit, aksesoris, dan peralatan khusus pria.</p></div>
     <div><h4>Belanja</h4><ul><li><a href="#/outfit">Outfit</a></li><li><a href="#/aksesoris">Aksesoris</a></li><li><a href="#/peralatan">Peralatan</a></li></ul></div>
     <div><h4>Perusahaan</h4><ul><li><a href="#/tentang">Tentang Kami</a></li><li><a href="#/tips">Gaya &amp; Tips</a></li><li><a href="javascript:void(0)">Karier</a></li></ul></div>
-    <div><h4>Bantuan</h4><ul><li><a href="javascript:void(0)">Pengiriman</a></li><li><a href="javascript:void(0)">Pengembalian</a></li><li><a href="javascript:void(0)">Hubungi Kami</a></li></ul></div>
+    <div><h4>Bantuan</h4><ul><li><a href="javascript:void(0)">Pengiriman</a></li><li><a href="javascript:void(0)">Pengembalian</a></li><li><a href="${WA_LINK}" target="_blank" rel="noopener">Hubungi Kami</a></li></ul></div>
   </div>
   <p class="copy">© 2026 Guyverse. Semua hak dilindungi.</p>
 </div></footer>
-<aside class="drawer" id="drawer" hidden aria-label="Keranjang belanja">
-  <div class="drawer-head"><h3>Keranjang</h3><button class="close" onclick="toggleCart(false)" aria-label="Tutup keranjang">×</button></div>
-  <div id="cartItems"></div>
-  <div class="drawer-foot">
-    <div class="total"><span>Total</span><strong id="cartTotal">Rp 0</strong></div>
-    <button class="btn btn-primary" style="width:100%" onclick="checkout()">Checkout</button>
-  </div>
+<aside class="drawer" id="drawer" hidden aria-label="Produk tersimpan">
+  <div class="drawer-head"><h3>Tersimpan</h3><button class="close" onclick="toggleSaved(false)" aria-label="Tutup">×</button></div>
+  <div id="savedItems"></div>
+  <div class="drawer-foot"><button class="btn btn-primary" style="width:100%" onclick="clearSaved()">Kosongkan Daftar</button></div>
 </aside>
 <div class="overlay" id="authOverlay" hidden>
   <div class="modal" role="dialog" aria-modal="true" aria-labelledby="authTitle">
     <button class="close" onclick="closeAuth()" aria-label="Tutup">×</button>
     <h2 id="authTitle">Masuk ke Guyverse</h2>
-    <p class="note" id="authNote">Masuk untuk menyimpan keranjang dan checkout.</p>
+    <p class="note" id="authNote">Masuk untuk menyimpan produk favoritmu.</p>
     <div class="tabs"><button type="button" id="tabLogin" class="active">Masuk</button><button type="button" id="tabReg">Daftar</button></div>
     <form id="authForm">
       <input id="aName" type="text" placeholder="Nama lengkap" hidden>
@@ -539,13 +526,13 @@ function setMode(m){
   $("authTitle").textContent = m === "login" ? "Masuk ke Guyverse" : "Daftar Akun Guyverse";
   $("authErr").textContent = "";
 }
-function openAuth(note){ setMode("login"); $("authNote").textContent = note || "Masuk untuk menyimpan keranjang dan checkout."; $("authOverlay").hidden = false; $("aEmail").focus(); }
+function openAuth(note){ setMode("login"); $("authNote").textContent = note || "Masuk untuk menyimpan produk favoritmu."; $("authOverlay").hidden = false; $("aEmail").focus(); }
 function closeAuth(){ $("authOverlay").hidden = true; $("authForm").reset(); }
 function bindAuth(){
   $("tabLogin").onclick = () => setMode("login");
   $("tabReg").onclick = () => setMode("reg");
   $("authOverlay").addEventListener("click", e => { if(e.target.id === "authOverlay") closeAuth(); });
-  document.addEventListener("keydown", e => { if(e.key === "Escape"){ closeAuth(); toggleCart(false); } });
+  document.addEventListener("keydown", e => { if(e.key === "Escape"){ closeAuth(); toggleSaved(false); } });
   $("authForm").addEventListener("submit", e => {
     e.preventDefault();
     const email = $("aEmail").value.trim().toLowerCase(), pass = $("aPass").value;
@@ -561,7 +548,6 @@ function bindAuth(){
     }
     store.set("gv_user", user); renderAuthBtn(); closeAuth();
     toast("Halo, " + user.name + "! Kamu sudah masuk.");
-    if(cart.length) toggleCart(true);
   });
   $("authBtn").onclick = () => {
     if(user){ user = null; store.set("gv_user", null); renderAuthBtn(); toast("Kamu sudah keluar."); }
@@ -569,43 +555,38 @@ function bindAuth(){
   };
 }
 
-/* ---------- Keranjang & checkout (tersimpan lintas halaman) ---------- */
-let cart = store.get("gv_cart", []);
-function saveCart(){ store.set("gv_cart", cart); renderCart(); }
-function addCart(i){
-  const it = cart.find(c => c.i === i);
-  it ? it.q++ : cart.push({i, q:1});
-  saveCart(); toast(products[i].n + " ditambahkan ke keranjang.");
+/* ---------- Simpan produk (tersimpan di browser, lintas halaman) ---------- */
+let saved = store.get("gv_saved", []);
+function persistSaved(){ store.set("gv_saved", saved); renderSaved(); }
+function syncButtons(){
+  document.querySelectorAll(".save").forEach(b => {
+    const on = saved.includes(+b.dataset.i);
+    b.classList.toggle("on", on); b.setAttribute("aria-pressed", String(on));
+  });
 }
-function changeQty(i, d){
-  const it = cart.find(c => c.i === i); if(!it) return;
-  it.q += d; if(it.q <= 0) cart = cart.filter(c => c.i !== i);
-  saveCart();
+function toggleSave(i){
+  const on = saved.includes(i);
+  saved = on ? saved.filter(x => x !== i) : [...saved, i];
+  persistSaved(); syncButtons();
+  toast(products[i].n + (on ? " dihapus dari simpanan." : " disimpan."));
 }
-function renderCart(){
-  $("cartCount").textContent = cart.reduce((a, c) => a + c.q, 0);
-  $("cartItems").innerHTML = cart.length ? cart.map(c => { const x = products[c.i]; return `
+function clearSaved(){ saved = []; persistSaved(); syncButtons(); }
+function renderSaved(){
+  $("savedCount").textContent = saved.length;
+  $("savedItems").innerHTML = saved.length ? saved.map(i => { const x = products[i]; return `
     <div class="ci"><div class="e">${x.i}</div>
-      <div><strong>${x.n}</strong><br><small>${rp(x.p)}</small></div>
-      <div class="qty"><button onclick="changeQty(${c.i},-1)" aria-label="Kurangi">−</button> ${c.q} <button onclick="changeQty(${c.i},1)" aria-label="Tambah">+</button></div>
-    </div>`; }).join("") : '<p class="empty">Keranjang masih kosong. Tambahkan produk untuk mulai belanja.</p>';
-  $("cartTotal").textContent = rp(cart.reduce((a, c) => a + products[c.i].p * c.q, 0));
+      <div><strong>${x.n}</strong><br><small>${x.c} · ${rp(x.p)}</small></div>
+      <button class="rm" onclick="toggleSave(${i})" aria-label="Hapus dari simpanan">×</button>
+    </div>`; }).join("") : '<p class="empty">Belum ada produk tersimpan. Tekan ikon simpan di pojok kanan atas produk.</p>';
 }
-function toggleCart(open){ $("drawer").hidden = !open; }
-function checkout(){
-  if(!cart.length){ toast("Keranjang masih kosong."); return; }
-  if(!user){ toggleCart(false); openAuth("Kamu harus masuk terlebih dahulu untuk melakukan checkout."); return; }
-  const total = $("cartTotal").textContent;
-  cart = []; saveCart(); toggleCart(false);
-  toast("Pesanan berhasil dibuat (" + total + "). Terima kasih, " + user.name + "!");
-}
+function toggleSaved(open){ $("drawer").hidden = !open; }
 
 /* ---------- Daftar produk & artikel ---------- */
 function renderProducts(list){
   R("products").innerHTML = list.length ? list.map(x => `
-    <article class="card"><div class="thumb t-${x.c.toLowerCase()}"><span class="emo">${x.i}</span>${products.indexOf(x)%3===0?'<em class="badge">Terlaris</em>':''}</div>
+    <article class="card"><div class="thumb t-${x.c.toLowerCase()}"><span class="emo">${x.i}</span>${products.indexOf(x)%3===0?'<em class="badge">Terlaris</em>':''}<button class="save${saved.includes(products.indexOf(x))?' on':''}" data-i="${products.indexOf(x)}" aria-pressed="${saved.includes(products.indexOf(x))}" aria-label="Simpan ${x.n}" onclick="toggleSave(${products.indexOf(x)})">${ICON_BM}</button></div>
       <div class="card-body"><span class="tag">${x.c}</span><h3>${x.n}</h3><p>${x.d}</p>
-      <div class="card-foot"><span class="price">${rp(x.p)}</span><button class="btn btn-primary" style="padding:8px 14px" onclick="addCart(${products.indexOf(x)})">+ Keranjang</button></div></div>
+      <div class="card-foot"><span class="price">${rp(x.p)}</span><a href="javascript:void(0)" class="link">Lihat Detail</a></div></div>
     </article>`).join("") : '<p class="empty">Produk tidak ditemukan. Coba kata kunci atau kategori lain.</p>';
 }
 function filterProducts(){   // halaman kategori: cari di dalam kategori
@@ -614,12 +595,13 @@ function filterProducts(){   // halaman kategori: cari di dalam kategori
   renderProducts(res);
   if(R("resultInfo")) R("resultInfo").textContent = q ? res.length + " produk ditemukan" : (R("resultInfo").dataset.def || "");
 }
-function doSearch(){         // beranda: kolom pencarian di hero
+let pendingQ = "";
+function doSearch(){         // beranda: buka halaman kategori yang cocok
   const q = R("q").value.trim().toLowerCase(), c = R("cat").value;
-  const res = products.filter(x => (!c || x.c === c) && (!q || x.n.toLowerCase().includes(q)));
-  renderProducts(res);
-  R("resultInfo").textContent = res.length + " produk ditemukan";
-  $("produk").scrollIntoView();
+  const hit = products.filter(x => (!c || x.c === c) && (!q || x.n.toLowerCase().includes(q)));
+  if(!hit.length){ toast("Produk tidak ditemukan. Coba kata kunci atau kategori lain."); return; }
+  pendingQ = q;
+  location.hash = "#/" + (c || hit[0].c).toLowerCase();
 }
 function renderArticles(f){
   const box = R("articles");
@@ -646,16 +628,25 @@ function route(){
   });
   document.title = TITLES[key] + " - Guyverse";
   $("nav").classList.remove("open");
-  if(R("pq")) R("pq").value = "";
+  if(R("pq")){ R("pq").value = pendingQ; pendingQ = ""; }
   if(R("products")) filterProducts();
   if(R("articles")) renderArticles("Semua");
   window.scrollTo(0, 0);
 }
 window.addEventListener("hashchange", route);
 
+/* ---------- Pop up WhatsApp admin ---------- */
+const WA_NUMBER = "6288215210931";   // 0882-1521-0931 dalam format internasional
+const WA_ICON = '<svg viewBox="0 0 24 24" width="30" height="30" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>';
+const WA_LINK = "https://wa.me/" + WA_NUMBER + "?text=" + encodeURIComponent("Halo Admin Guyverse, saya butuh bantuan.");
+function initWA(){   // tombol melayang: langsung membuka WhatsApp admin
+  document.body.insertAdjacentHTML("beforeend",
+    `<a class="wa-fab" href="${WA_LINK}" target="_blank" rel="noopener" aria-label="Hubungi admin lewat WhatsApp" title="Hubungi admin lewat WhatsApp">${WA_ICON}</a>`);
+}
+
 /* ---------- Mulai ---------- */
-layout(); bindAuth(); renderAuthBtn(); renderCart();
-$("cartBtn").onclick = () => toggleCart($("drawer").hidden);
+layout(); bindAuth(); initWA(); renderAuthBtn(); renderSaved();
+$("savedBtn").onclick = () => toggleSaved($("drawer").hidden);
 document.addEventListener("input", e => { if(e.target.dataset.role === "pq") filterProducts(); });
 document.addEventListener("click", e => {
   const b = e.target.closest('[data-role="filters"] button');
