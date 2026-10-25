@@ -477,8 +477,8 @@ footer .logo{width:40px;height:40px}
             <label for="pName">Nama Produk</label>
             <input id="pName" type="text" required maxlength="120" placeholder="Contoh: Kemeja Oxford Slim Fit">
 
-            <label for="pPrice">Harga (Rp)</label>
-            <input id="pPrice" type="number" required min="0" step="1000" placeholder="329000">
+           <label for="pPrice">Harga (Rp)</label>
+           <input id="pPrice" type="number" required min="0" step="1" placeholder="329000">
 
             <label for="pShopee">Link Shopee</label>
             <input id="pShopee" type="url" placeholder="https://shopee.co.id/...">
@@ -533,7 +533,7 @@ const NAV = [
 
 /* ---------- Konfigurasi Admin ---------- */
 // Ganti dengan email admin (bisa lebih dari satu). Email harus terdaftar di Supabase Auth.
-const ADMIN_EMAILS = ["admin@guyverse.id", "email-kamu@gmail.com"];
+const ADMIN_EMAILS = ["admin@guyverse.id", "adminguy@gmail.com"];
 function isAdmin(){
   if(!user) return false;
   if(String(user.role || "").toLowerCase() === "admin") return true;
