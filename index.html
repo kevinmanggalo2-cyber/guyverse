@@ -252,7 +252,7 @@ footer .logo{width:40px;height:40px}
 .image-input-group span{color:var(--muted);font-size:.82rem;font-family:'Archivo'}
 #pPreview{margin-bottom:12px}
 #pPreview img{max-width:100%;max-height:180px;border-radius:6px;border:1px solid #e4e0d8}
-#adminProducts{max-height:600px;overflow-y:auto}
+#adminProducts, #adminArticles{max-height:600px;overflow-y:auto}
 .admin-lock{padding:70px 20px;text-align:center;background:var(--card);border:1px solid #e4e0d8;border-left:4px solid var(--copper);border-radius:12px}
 .admin-lock h2{font-family:'Archivo';font-size:1.8rem;margin-bottom:12px;color:var(--charcoal)}
 .admin-lock p{color:var(--muted);margin-bottom:20px}
@@ -260,9 +260,15 @@ footer .logo{width:40px;height:40px}
 .thumb.has-img .badge{z-index:3}
 .thumb.has-img img{width:100%;height:100%;object-fit:cover;display:block;position:relative;z-index:1}
 @media(max-width:820px){.admin-wrap{grid-template-columns:1fr}}
+
 /* Star Rating Input */
 .star-rating{display:flex;gap:5px;font-size:2rem;color:#ccc;cursor:pointer;margin-bottom:15px}
 .star-rating .star.active{color:var(--copper)}
+
+/* Admin Tabs */
+.admin-tabs{display:flex; gap:10px; margin-bottom:20px; border-bottom:2px solid #e4e0d8; padding-bottom:10px;}
+.btn-outline{background:transparent; border:1px solid var(--charcoal); color:var(--charcoal);}
+.btn-outline:hover{background:var(--charcoal); color:#fff;}
 </style>
 </head>
 <body>
@@ -432,7 +438,7 @@ footer .logo{width:40px;height:40px}
 <div class="page" id="page-admin" hidden>
   <div class="about-hero"><div class="container">
     <h1>Panel Admin</h1>
-    <p>Kelola produk Guyverse — tambah produk baru dengan foto dan link Shopee.</p>
+    <p>Kelola produk dan artikel Guyverse.</p>
   </div></div>
 
   <section><div class="container">
@@ -443,52 +449,99 @@ footer .logo{width:40px;height:40px}
     </div>
 
     <div id="adminContent" hidden>
-      <div class="admin-wrap">
-        <div class="admin-form">
-          <h2>Tambah Produk Baru</h2>
-          <form id="addProductForm">
-            <label for="pCat">Kategori</label>
-            <select id="pCat" required>
-              <option value="">— Pilih kategori —</option>
-              <option value="Outfit">Outfit</option>
-              <option value="Aksesoris">Aksesoris</option>
-              <option value="Kebutuhan">Kebutuhan</option>
-            </select>
+      
+      <!-- TABS ADMIN -->
+      <div class="admin-tabs">
+        <button class="btn btn-primary" id="tabBtnProd" onclick="switchAdminTab('prod')">📦 Kelola Produk</button>
+        <button class="btn btn-outline" id="tabBtnArt" onclick="switchAdminTab('art')">📝 Kelola Artikel</button>
+      </div>
 
-            <label for="pName">Nama Produk</label>
-            <input id="pName" type="text" required maxlength="120" placeholder="Contoh: Kemeja Oxford Slim Fit">
+      <!-- SECTION PRODUK -->
+      <div id="sectionProd">
+        <div class="admin-wrap">
+          <div class="admin-form">
+            <h2>Tambah Produk Baru</h2>
+            <form id="addProductForm">
+              <label for="pCat">Kategori</label>
+              <select id="pCat" required>
+                <option value="">— Pilih kategori —</option>
+                <option value="Outfit">Outfit</option>
+                <option value="Aksesoris">Aksesoris</option>
+                <option value="Kebutuhan">Kebutuhan</option>
+              </select>
 
-           <label for="pPrice">Harga (Rp)</label>
-           <input id="pPrice" type="number" required min="0" step="1" placeholder="329000">
+              <label for="pName">Nama Produk</label>
+              <input id="pName" type="text" required maxlength="120" placeholder="Contoh: Kemeja Oxford Slim Fit">
 
-            <label for="pShopee">Link Shopee</label>
-            <input id="pShopee" type="url" placeholder="https://shopee.co.id/...">
+              <label for="pPrice">Harga (Rp)</label>
+              <input id="pPrice" type="number" required min="0" step="1" placeholder="329000">
 
-            <label for="pEmoji">Emoji (fallback jika foto kosong)</label>
-            <input id="pEmoji" type="text" maxlength="4" placeholder="👔">
+              <label for="pShopee">Link Shopee</label>
+              <input id="pShopee" type="url" placeholder="https://shopee.co.id/...">
 
-            <label for="pDesc">Deskripsi</label>
-            <textarea id="pDesc" maxlength="300" placeholder="Deskripsi singkat produk..."></textarea>
+              <label for="pEmoji">Emoji (fallback jika foto kosong)</label>
+              <input id="pEmoji" type="text" maxlength="4" placeholder="👔">
 
-            <label>Foto Produk</label>
-            <div class="image-input-group">
-              <input id="pImage" type="url" placeholder="URL foto (https://...)">
-              <span>atau</span>
-              <input id="pImageFile" type="file" accept="image/*">
-            </div>
-            <div id="pPreview"></div>
+              <label for="pDesc">Deskripsi</label>
+              <textarea id="pDesc" maxlength="300" placeholder="Deskripsi singkat produk..."></textarea>
 
-            <p class="err" id="pErr"></p>
-            <button class="btn btn-primary" id="pSubmit" type="submit" style="width:100%">Simpan Produk</button>
-          </form>
-        </div>
+              <label>Foto Produk</label>
+              <div class="image-input-group">
+                <input id="pImage" type="url" placeholder="URL foto (https://...)">
+                <span>atau</span>
+                <input id="pImageFile" type="file" accept="image/*">
+              </div>
+              <div id="pPreview"></div>
 
-        <div class="admin-list">
-          <h2>Daftar Produk</h2>
-          <p class="note" style="margin-bottom:12px">Klik × untuk menghapus produk.</p>
-          <div id="adminProducts"></div>
+              <p class="err" id="pErr"></p>
+              <button class="btn btn-primary" id="pSubmit" type="submit" style="width:100%">Simpan Produk</button>
+            </form>
+          </div>
+
+          <div class="admin-list">
+            <h2>Daftar Produk</h2>
+            <p class="note" style="margin-bottom:12px">Klik × untuk menghapus produk.</p>
+            <div id="adminProducts"></div>
+          </div>
         </div>
       </div>
+
+      <!-- SECTION ARTIKEL -->
+      <div id="sectionArt" hidden>
+        <div class="admin-wrap">
+          <div class="admin-form">
+            <h2>Tambah Artikel Baru</h2>
+            <form id="addArticleForm">
+              <label for="aCat">Kategori</label>
+              <select id="aCat" required>
+                <option value="">— Pilih kategori —</option>
+                <option value="Outfit">Outfit</option>
+                <option value="Aksesoris">Aksesoris</option>
+                <option value="Kebutuhan">Kebutuhan</option>
+              </select>
+
+              <label for="aTitle">Judul Artikel</label>
+              <input id="aTitle" type="text" required maxlength="150" placeholder="Contoh: 5 Outfit Kasual untuk Kerja">
+
+              <label for="aEmoji">Emoji (Fallback)</label>
+              <input id="aEmoji" type="text" maxlength="4" placeholder="👕">
+
+              <label for="aSummary">Ringkasan / Deskripsi Singkat</label>
+              <textarea id="aSummary" required maxlength="250" placeholder="Kombinasi kemeja, chino, dan sneakers yang tetap rapi..."></textarea>
+
+              <p class="err" id="aErr"></p>
+              <button class="btn btn-primary" id="aSubmit" type="submit" style="width:100%">Simpan Artikel</button>
+            </form>
+          </div>
+
+          <div class="admin-list">
+            <h2>Daftar Artikel</h2>
+            <p class="note" style="margin-bottom:12px">Klik × untuk menghapus artikel.</p>
+            <div id="adminArticles"></div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div></section>
 </div>
@@ -520,25 +573,9 @@ function isAdmin(){
   return ADMIN_EMAILS.map(e => e.toLowerCase()).includes(String(user.email || "").toLowerCase());
 }
 
-const products = [
-  {n:"Kemeja Oxford Slim Fit",c:"Outfit",p:329000,i:"👔",d:"Katun halus, nyaman untuk kerja dan santai.",shopee:"",image_url:""},
-  {n:"Jaket Bomber Hitam",c:"Outfit",p:549000,i:"🧥",d:"Potongan modern, cocok untuk malam hari.",shopee:"",image_url:""},
-  {n:"Celana Chino Navy",c:"Outfit",p:289000,i:"👖",d:"Bahan stretch, mudah dipadukan.",shopee:"",image_url:""},
-  {n:"Jam Tangan Minimalis",c:"Aksesoris",p:799000,i:"⌚",d:"Strap kulit, tahan percikan air.",shopee:"",image_url:""},
-  {n:"Ikat Pinggang Kulit",c:"Aksesoris",p:219000,i:"🪢",d:"Kulit sapi asli dengan gesper baja.",shopee:"",image_url:""},
-  {n:"Topi Baseball Washed",c:"Aksesoris",p:149000,i:"🧢",d:"Ukuran bisa diatur, warna tahan lama.",shopee:"",image_url:""},
-  {n:"Kit Grooming Lengkap",c:"Kebutuhan",p:359000,i:"🪒",d:"Pencukur, sisir, dan minyak jenggot.",shopee:"",image_url:""},
-  {n:"Ransel Urban Anti Air",c:"Kebutuhan",p:459000,i:"🎒",d:"Muat laptop 15 inci, banyak kantong.",shopee:"",image_url:""},
-  {n:"Power Bank 20.000 mAh",c:"Kebutuhan",p:299000,i:"🔋",d:"Pengisian cepat, bodi aluminium.",shopee:"",image_url:""}
-];
-const articles = [
-  {t:"5 Outfit Kasual untuk Kerja Hybrid",c:"Outfit",i:"👕",d:"Kombinasi kemeja, chino, dan sneakers yang tetap rapi."},
-  {t:"Cara Memilih Jam Tangan Sesuai Gaya",c:"Aksesoris",i:"⌚",d:"Ukuran case, warna strap, dan acara yang cocok."},
-  {t:"Perlengkapan Grooming Wajib Pria",c:"Kebutuhan",i:"🪒",d:"Daftar alat dasar agar penampilan selalu bersih."},
-  {t:"Panduan Mix and Match Warna Netral",c:"Outfit",i:"🧥",d:"Hitam, navy, abu, dan krem tanpa bingung."},
-  {t:"Ikat Pinggang dan Sepatu: Harus Senada?",c:"Aksesoris",i:"🪢",d:"Aturan sederhana agar tampilan konsisten."},
-  {t:"Tas Harian: Ransel atau Tote?",c:"Kebutuhan",i:"🎒",d:"Pilih sesuai rutinitas dan isi bawaanmu."}
-];
+const products = [];
+const articles = [];
+
 const rp = n => "Rp " + n.toLocaleString("id-ID");
 const $ = id => document.getElementById(id);
 const R = r => document.querySelector('.page:not([hidden]) [data-role="'+r+'"]');
@@ -662,7 +699,10 @@ function toggleAdminLock(){
   const admin = isAdmin();
   lock.hidden = admin;
   content.hidden = !admin;
-  if(admin) renderAdminProducts();
+  if(admin) {
+    renderAdminProducts();
+    renderAdminArticles();
+  }
 }
 function setMode(m){
   mode = m;
@@ -895,15 +935,17 @@ async function loadData(){
     sb.from("products").select("*").order("sort_order"),
     sb.from("articles").select("*").order("sort_order")
   ]);
-  if(!p.error && p.data && p.data.length){
+  if(!p.error && p.data){
     products.length = 0;
     p.data.forEach(r => products.push({id:r.id, n:r.name, c:r.category, p:r.price, i:r.emoji || "🛍️", d:r.description || "", shopee:r.shopee_url || "", image_url:r.image_url || ""}));
     saved = saved.filter(i => i < products.length);
   } else if(p.error) console.warn("Supabase products:", p.error.message);
-  if(!a.error && a.data && a.data.length){
+  
+  if(!a.error && a.data){
     articles.length = 0;
-    a.data.forEach(r => articles.push({t:r.title, c:r.category, i:r.emoji || "📰", d:r.summary || ""}));
+    a.data.forEach(r => articles.push({id:r.id, t:r.title, c:r.category, i:r.emoji || "📰", d:r.summary || ""}));
   } else if(a.error) console.warn("Supabase articles:", a.error.message);
+  
   renderSaved();
   if(R("products")) filterProducts();
   if(R("articles")){ const act = document.querySelector('.page:not([hidden]) [data-role="filters"] .active'); renderArticles(act ? act.dataset.f : "Semua"); }
@@ -975,14 +1017,28 @@ function renderArticles(f){
   const cat = box.dataset.cat || f || "Semua";
   let list = articles.filter(a => cat === "Semua" || a.c === cat);
   if(box.dataset.limit) list = list.slice(0, +box.dataset.limit);
-  box.innerHTML = list.map(a => `
+  box.innerHTML = list.length ? list.map(a => `
     <article class="card"><div class="thumb t-${a.c.toLowerCase()}"><span class="emo">${a.i}</span></div>
       <div class="card-body"><span class="tag">${a.c}</span><h3>${a.t}</h3><p>${a.d}</p>
       <div class="card-foot"><span></span><a href="javascript:void(0)" class="link">Baca Selengkapnya</a></div></div>
-    </article>`).join("");
+    </article>`).join("") : '<p class="empty">Belum ada artikel di kategori ini.</p>';
 }
 
 /* ---------- Panel Admin ---------- */
+function switchAdminTab(tab){
+  if(tab === 'prod'){
+    $("sectionProd").hidden = false;
+    $("sectionArt").hidden = true;
+    $("tabBtnProd").className = "btn btn-primary";
+    $("tabBtnArt").className = "btn btn-outline";
+  } else {
+    $("sectionProd").hidden = true;
+    $("sectionArt").hidden = false;
+    $("tabBtnProd").className = "btn btn-outline";
+    $("tabBtnArt").className = "btn btn-primary";
+  }
+}
+
 function renderAdminProducts(){
   const box = document.getElementById("adminProducts");
   if(!box) return;
@@ -998,6 +1054,20 @@ function renderAdminProducts(){
         <button class="rm" onclick="deleteProduct(${i})" aria-label="Hapus ${x.n}">×</button>
       </div>`;
   }).join("") : '<p class="empty">Belum ada produk.</p>';
+}
+
+function renderAdminArticles(){
+  const box = document.getElementById("adminArticles");
+  if(!box) return;
+  if(!isAdmin()){ box.innerHTML = '<p class="empty">Akses ditolak.</p>'; return; }
+  box.innerHTML = articles.length ? articles.map((x,i) => {
+    return `
+      <div class="ci">
+        <div class="e">${x.i}</div>
+        <div><strong>${x.t}</strong><br><small>${x.c}</small></div>
+        <button class="rm" onclick="deleteArticle(${i})" aria-label="Hapus ${x.t}">×</button>
+      </div>`;
+  }).join("") : '<p class="empty">Belum ada artikel.</p>';
 }
 
 async function addProduct(e){
@@ -1099,12 +1169,82 @@ function updatePreview(){
   prev.innerHTML = src ? `<img src="${src}" alt="Pratinjau">` : "";
 }
 
+async function addArticle(e){
+  e.preventDefault();
+  if(!isAdmin()){ toast("Hanya admin yang dapat menambah artikel."); return; }
+
+  const cat   = document.getElementById("aCat").value;
+  const title = document.getElementById("aTitle").value.trim();
+  const emoji = document.getElementById("aEmoji").value.trim() || "📰";
+  const summary = document.getElementById("aSummary").value.trim();
+  const btn   = document.getElementById("aSubmit");
+  const errEl = document.getElementById("aErr");
+
+  errEl.textContent = "";
+  if(!cat || !title || !summary){
+    errEl.textContent = "Kategori, Judul, dan Ringkasan wajib diisi.";
+    return;
+  }
+
+  const newArticle = {t:title, c:cat, i:emoji, d:summary};
+
+  if(!sb){
+    articles.push(newArticle);
+    e.target.reset();
+    renderAdminArticles();
+    if(R("articles")) renderArticles(document.querySelector('.page:not([hidden]) [data-role="filters"] .active')?.dataset.f || "Semua");
+    toast("Artikel ditambahkan (mode demo).");
+    return;
+  }
+
+  btn.disabled = true; btn.textContent = "Menyimpan...";
+  try{
+    const { data, error } = await sb.from("articles").insert({
+      title, category: cat, emoji, summary
+    }).select().single();
+
+    if(error) throw new Error("Simpan artikel: " + error.message);
+
+    newArticle.id = data.id;
+    articles.push(newArticle);
+
+    e.target.reset();
+    renderAdminArticles();
+    if(R("articles")) renderArticles(document.querySelector('.page:not([hidden]) [data-role="filters"] .active')?.dataset.f || "Semua");
+    toast("Artikel berhasil ditambahkan!");
+  } catch(err){
+    errEl.textContent = err.message;
+  } finally {
+    btn.disabled = false; btn.textContent = "Simpan Artikel";
+  }
+}
+
+async function deleteArticle(i){
+  if(!isAdmin()) return;
+  const a = articles[i];
+  if(!a) return;
+  if(!confirm(`Hapus artikel "${a.t}"?`)) return;
+
+  if(sb && a.id){
+    const { error } = await sb.from("articles").delete().eq("id", a.id);
+    if(error){ toast("Gagal hapus: " + error.message); return; }
+  }
+
+  articles.splice(i, 1);
+  renderAdminArticles();
+  if(R("articles")) renderArticles(document.querySelector('.page:not([hidden]) [data-role="filters"] .active')?.dataset.f || "Semua");
+  toast("Artikel dihapus.");
+}
+
 function bindAdmin(){
-  const form = document.getElementById("addProductForm");
-  if(!form) return;
-  form.addEventListener("submit", addProduct);
-  document.getElementById("pImage").addEventListener("input", updatePreview);
-  document.getElementById("pImageFile").addEventListener("change", updatePreview);
+  const formProd = document.getElementById("addProductForm");
+  if(formProd) formProd.addEventListener("submit", addProduct);
+  
+  const formArt = document.getElementById("addArticleForm");
+  if(formArt) formArt.addEventListener("submit", addArticle);
+
+  if(document.getElementById("pImage")) document.getElementById("pImage").addEventListener("input", updatePreview);
+  if(document.getElementById("pImageFile")) document.getElementById("pImageFile").addEventListener("change", updatePreview);
 }
 
 /* ---------- Routing ---------- */
