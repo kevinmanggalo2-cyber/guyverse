@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Guyverse - Gaya, Aksesoris & Peralatan Pria</title>
+<title>Guyverse - Gaya, Aksesoris & Kebutuhan Pria</title>
 <link rel="icon" type="image/png">
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&family=Source+Serif+4:wght@400;600&display=swap" rel="stylesheet">
 <style>
@@ -172,7 +172,7 @@ nav a:hover::after,nav a[aria-current="page"]::after{width:100%}
 .cat{position:relative;overflow:hidden;min-height:190px;border:1px solid rgba(200,150,62,.25);transition:transform .25s,box-shadow .25s,border-color .25s}
 .cat.c-outfit,.cat.c-outfit:hover{background:linear-gradient(145deg,#1B1F23,#3a5169)}
 .cat.c-aksesoris,.cat.c-aksesoris:hover{background:linear-gradient(145deg,#241d14,#8a6528)}
-.cat.c-peralatan,.cat.c-peralatan:hover{background:linear-gradient(145deg,#1B1F23,#355846)}
+.cat.c-kebutuhan,.cat.c-kebutuhan:hover{background:linear-gradient(145deg,#1B1F23,#355846)}
 .cat:hover{transform:translateY(-6px);box-shadow:0 18px 36px rgba(27,31,35,.35);border-color:var(--copper)}
 .cat h3,.cat p{position:relative}
 .cat .ico{position:absolute;right:-6px;bottom:-18px;margin:0;font-size:7rem;line-height:1;opacity:.2;transition:transform .3s}
@@ -185,7 +185,7 @@ nav a:hover::after,nav a[aria-current="page"]::after{width:100%}
 .card:hover .emo{transform:scale(1.12) rotate(-4deg)}
 .t-outfit{background:linear-gradient(135deg,#dfe7ef,#b4c4d6)}
 .t-aksesoris{background:linear-gradient(135deg,#f6e8c8,#e0bb70)}
-.t-peralatan{background:linear-gradient(135deg,#d9e6dd,#a4c0af)}
+.t-kebutuhan{background:linear-gradient(135deg,#d9e6dd,#a4c0af)}
 .badge{position:absolute;top:12px;left:12px;z-index:1;font-style:normal;font-family:'Archivo';font-size:.72rem;font-weight:800;padding:4px 10px;border-radius:20px;background:linear-gradient(135deg,#E3B35A,#C8963E);color:var(--charcoal)}
 .tag{background:linear-gradient(135deg,var(--charcoal),var(--navy))}
 .price{font-size:1.15rem}
@@ -271,14 +271,14 @@ footer .logo{width:40px;height:40px}
 <div class="orbs" aria-hidden="true"><span><img src="assets/O1.png" alt="" onerror="this.replaceWith('👔')"></span><span><img src="assets/O2.png" alt="" onerror="this.replaceWith('⌚')"></span><span><img src="assets/O3.png" alt="" onerror="this.replaceWith('🎒')"></span><span><img src="assets/O4.png" alt="" onerror="this.replaceWith('🧥')"></span></div>
     <div class="container">
       <h1>Semua yang dibutuhkan pria untuk tampil percaya diri.</h1>
-      <p>Temukan outfit, aksesoris, dan peralatan pilihan, dikurasi khusus untuk pria.</p>
+      <p>Temukan outfit, aksesoris, dan kebutuhan pilihan, dikurasi khusus untuk pria.</p>
       <form class="search" onsubmit="event.preventDefault();doSearch()">
         <input data-role="q" type="text" placeholder="Cari jaket, jam tangan, tas..." aria-label="Cari produk">
         <select data-role="cat" aria-label="Kategori">
           <option value="">Semua kategori</option>
           <option>Outfit</option>
           <option>Aksesoris</option>
-          <option>Peralatan</option>
+          <option>Kebutuhan</option>
         </select>
         <button class="btn btn-primary" type="submit">Cari Produk</button>
       </form>
@@ -298,7 +298,7 @@ footer .logo{width:40px;height:40px}
       <div class="cats">
         <a href="#/outfit" class="cat c-outfit"><div class="ico">👔</div><h3>Outfit</h3><p>Kemeja, kaos, jaket, celana, setelan</p></a>
         <a href="#/aksesoris" class="cat c-aksesoris"><div class="ico">⌚</div><h3>Aksesoris</h3><p>Jam tangan, ikat pinggang, topi, dompet</p></a>
-        <a href="#/peralatan" class="cat c-peralatan"><div class="ico">🎒</div><h3>Peralatan</h3><p>Grooming, tas, gadget, outdoor</p></a>
+        <a href="#/kebutuhan" class="cat c-kebutuhan"><div class="ico">🎒</div><h3>Kebutuhan</h3><p>Grooming, tas, gadget, outdoor</p></a>
       </div>
     </div>
   </section>
@@ -307,13 +307,13 @@ footer .logo{width:40px;height:40px}
     <div class="container profile">
       <div>
         <h2>Profil Perusahaan Guyverse</h2>
-        <p>Guyverse adalah toko online yang didedikasikan khusus untuk pria. Kami mengumpulkan outfit, aksesoris, dan peralatan dari berbagai brand dalam satu tempat, supaya pria tidak perlu berpindah-pindah toko untuk tampil rapi.</p>
+        <p>Guyverse adalah toko online yang didedikasikan khusus untuk pria. Kami mengumpulkan outfit, aksesoris, dan kebutuhan dari berbagai brand dalam satu tempat, supaya pria tidak perlu berpindah-pindah toko untuk tampil rapi.</p>
         <p>Setiap produk kami seleksi berdasarkan kualitas bahan, kenyamanan, dan kemudahan dipadukan dalam keseharian.</p>
         <a href="#/tentang" class="btn btn-primary">Selengkapnya Tentang Kami</a>
       </div>
       <div class="facts">
         <div class="fact"><strong>2024</strong><span>Tahun berdiri</span></div>
-        <div class="fact"><strong>3 Kategori</strong><span>Outfit, aksesoris, peralatan</span></div>
+        <div class="fact"><strong>3 Kategori</strong><span>Outfit, aksesoris, kebutuhan</span></div>
         <div class="fact"><strong>150+ Brand</strong><span>Mitra brand pria</span></div>
         <div class="fact"><strong>30rb+</strong><span>Pelanggan terlayani</span></div>
       </div>
@@ -349,12 +349,12 @@ footer .logo{width:40px;height:40px}
 
   <div class="about-hero"><div class="container">
     <h1>Tentang Guyverse</h1>
-    <p>Tempat pria menemukan gaya, aksesoris, dan peralatan yang sesuai karakternya.</p>
+    <p>Tempat pria menemukan gaya, aksesoris, dan kebutuhan yang sesuai karakternya.</p>
   </div></div>
   <section><div class="container about-block about-grid"><div>
     <h2>Siapa Kami</h2>
     <p>Guyverse lahir dari kebiasaan sederhana: sulit menemukan satu toko yang benar-benar fokus pada kebutuhan pria. Pakaian ada di satu tempat, jam tangan di tempat lain, perlengkapan grooming di tempat berbeda lagi.</p>
-    <p>Kami menyatukan semuanya. Di Guyverse kamu bisa mencari outfit untuk kerja dan santai, aksesoris untuk menyempurnakan penampilan, serta peralatan harian seperti tas, gadget, dan perlengkapan grooming.</p>
+    <p>Kami menyatukan semuanya. Di Guyverse kamu bisa mencari outfit untuk kerja dan santai, aksesoris untuk menyempurnakan penampilan, serta kebutuhan harian seperti tas, gadget, dan perlengkapan grooming.</p>
     <p>Selain berjualan, kami menulis panduan gaya di halaman Gaya &amp; Tips agar kamu tahu cara memilih dan memadukan produk dengan percaya diri.</p>
   </div><div class="about-logo"><img src="assets/TRANSPARAN.png" alt="Logo Guyverse" width="186" height="186" onerror="this.onerror=null;this.src=LOGO"></div></div></section>
   <section class="steps-wrap"><div class="container">
@@ -381,13 +381,6 @@ footer .logo{width:40px;height:40px}
     </div>
     <div class="grid" data-role="products" data-cat="Outfit"></div>
   </div></section>
-  <section style="padding-top:0"><div class="container">
-    <div class="section-head">
-      <div><h2>Artikel Terkait</h2><p>Inspirasi memadukan outfit.</p></div>
-      <a href="#/tips" class="btn btn-primary">Lihat Semua Artikel</a>
-    </div>
-    <div class="grid" data-role="articles" data-cat="Outfit"></div>
-  </div></section>
 </div>
 
 <div class="page" id="page-aksesoris" hidden>
@@ -402,47 +395,33 @@ footer .logo{width:40px;height:40px}
     </div>
     <div class="grid" data-role="products" data-cat="Aksesoris"></div>
   </div></section>
-  <section style="padding-top:0"><div class="container">
-    <div class="section-head">
-      <div><h2>Artikel Terkait</h2><p>Tips memilih aksesoris.</p></div>
-      <a href="#/tips" class="btn btn-primary">Lihat Semua Artikel</a>
-    </div>
-    <div class="grid" data-role="articles" data-cat="Aksesoris"></div>
-  </div></section>
 </div>
 
-<div class="page" id="page-peralatan" hidden>
+<div class="page" id="page-kebutuhan" hidden>
 <div class="about-hero"><div class="container">
-    <h1>Peralatan</h1>
+    <h1>Kebutuhan</h1>
     <p>Grooming, tas, gadget, dan perlengkapan harian pria.</p>
   </div></div>
   <section><div class="container">
     <div class="section-head">
-      <div><h2>Koleksi Peralatan</h2><p data-role="resultInfo" data-def="Pilihan terbaik untuk kebutuhanmu.">Pilihan terbaik untuk kebutuhanmu.</p></div>
-      <input data-role="pq" class="finder" type="search" placeholder="Cari di Peralatan..." aria-label="Cari di Peralatan">
+      <div><h2>Koleksi Kebutuhan</h2><p data-role="resultInfo" data-def="Pilihan terbaik untuk kebutuhanmu.">Pilihan terbaik untuk kebutuhanmu.</p></div>
+      <input data-role="pq" class="finder" type="search" placeholder="Cari di Kebutuhan..." aria-label="Cari di Kebutuhan">
     </div>
-    <div class="grid" data-role="products" data-cat="Peralatan"></div>
-  </div></section>
-  <section style="padding-top:0"><div class="container">
-    <div class="section-head">
-      <div><h2>Artikel Terkait</h2><p>Panduan memilih peralatan.</p></div>
-      <a href="#/tips" class="btn btn-primary">Lihat Semua Artikel</a>
-    </div>
-    <div class="grid" data-role="articles" data-cat="Peralatan"></div>
+    <div class="grid" data-role="products" data-cat="Kebutuhan"></div>
   </div></section>
 </div>
 
 <div class="page" id="page-tips" hidden>
 <div class="about-hero"><div class="container">
     <h1>Gaya &amp; Tips</h1>
-    <p>Panduan praktis untuk memilih dan memadukan outfit, aksesoris, dan peralatan.</p>
+    <p>Panduan praktis untuk memilih dan memadukan outfit, aksesoris, dan kebutuhan.</p>
   </div></div>
   <section><div class="container">
     <div class="filters" data-role="filters">
       <button class="active" data-f="Semua">Semua</button>
       <button data-f="Outfit">Outfit</button>
       <button data-f="Aksesoris">Aksesoris</button>
-      <button data-f="Peralatan">Peralatan</button>
+      <button data-f="Kebutuhan">Kebutuhan</button>
     </div>
     <div class="grid" data-role="articles"></div>
   </div></section>
@@ -471,7 +450,7 @@ footer .logo{width:40px;height:40px}
               <option value="">— Pilih kategori —</option>
               <option value="Outfit">Outfit</option>
               <option value="Aksesoris">Aksesoris</option>
-              <option value="Peralatan">Peralatan</option>
+              <option value="Kebutuhan">Kebutuhan</option>
             </select>
 
             <label for="pName">Nama Produk</label>
@@ -527,7 +506,7 @@ const NAV = [
   ["#/tentang","Tentang Kami","about"],
   ["#/outfit","Outfit","outfit"],
   ["#/aksesoris","Aksesoris","aksesoris"],
-  ["#/peralatan","Peralatan","peralatan"],
+  ["#/kebutuhan","Kebutuhan","kebutuhan"],
   ["#/tips","Gaya &amp; Tips","tips"]
 ];
 
@@ -548,17 +527,17 @@ const products = [
   {n:"Jam Tangan Minimalis",c:"Aksesoris",p:799000,i:"⌚",d:"Strap kulit, tahan percikan air.",shopee:"",image_url:""},
   {n:"Ikat Pinggang Kulit",c:"Aksesoris",p:219000,i:"🪢",d:"Kulit sapi asli dengan gesper baja.",shopee:"",image_url:""},
   {n:"Topi Baseball Washed",c:"Aksesoris",p:149000,i:"🧢",d:"Ukuran bisa diatur, warna tahan lama.",shopee:"",image_url:""},
-  {n:"Kit Grooming Lengkap",c:"Peralatan",p:359000,i:"🪒",d:"Pencukur, sisir, dan minyak jenggot.",shopee:"",image_url:""},
-  {n:"Ransel Urban Anti Air",c:"Peralatan",p:459000,i:"🎒",d:"Muat laptop 15 inci, banyak kantong.",shopee:"",image_url:""},
-  {n:"Power Bank 20.000 mAh",c:"Peralatan",p:299000,i:"🔋",d:"Pengisian cepat, bodi aluminium.",shopee:"",image_url:""}
+  {n:"Kit Grooming Lengkap",c:"Kebutuhan",p:359000,i:"🪒",d:"Pencukur, sisir, dan minyak jenggot.",shopee:"",image_url:""},
+  {n:"Ransel Urban Anti Air",c:"Kebutuhan",p:459000,i:"🎒",d:"Muat laptop 15 inci, banyak kantong.",shopee:"",image_url:""},
+  {n:"Power Bank 20.000 mAh",c:"Kebutuhan",p:299000,i:"🔋",d:"Pengisian cepat, bodi aluminium.",shopee:"",image_url:""}
 ];
 const articles = [
   {t:"5 Outfit Kasual untuk Kerja Hybrid",c:"Outfit",i:"👕",d:"Kombinasi kemeja, chino, dan sneakers yang tetap rapi."},
   {t:"Cara Memilih Jam Tangan Sesuai Gaya",c:"Aksesoris",i:"⌚",d:"Ukuran case, warna strap, dan acara yang cocok."},
-  {t:"Perlengkapan Grooming Wajib Pria",c:"Peralatan",i:"🪒",d:"Daftar alat dasar agar penampilan selalu bersih."},
+  {t:"Perlengkapan Grooming Wajib Pria",c:"Kebutuhan",i:"🪒",d:"Daftar alat dasar agar penampilan selalu bersih."},
   {t:"Panduan Mix and Match Warna Netral",c:"Outfit",i:"🧥",d:"Hitam, navy, abu, dan krem tanpa bingung."},
   {t:"Ikat Pinggang dan Sepatu: Harus Senada?",c:"Aksesoris",i:"🪢",d:"Aturan sederhana agar tampilan konsisten."},
-  {t:"Tas Harian: Ransel atau Tote?",c:"Peralatan",i:"🎒",d:"Pilih sesuai rutinitas dan isi bawaanmu."}
+  {t:"Tas Harian: Ransel atau Tote?",c:"Kebutuhan",i:"🎒",d:"Pilih sesuai rutinitas dan isi bawaanmu."}
 ];
 const rp = n => "Rp " + n.toLocaleString("id-ID");
 const $ = id => document.getElementById(id);
@@ -585,8 +564,8 @@ function layout(){
   document.body.insertAdjacentHTML("beforeend", `
 <footer><div class="container">
   <div class="foot">
-    <div><a href="#/beranda" class="brand"><img class="logo" src="${LOGO}" alt="" width="44" height="44"><em class="wm">Guy<span>verse</span></em></a><p style="margin-top:10px;max-width:280px">Tempat belanja outfit, aksesoris, dan peralatan khusus pria.</p></div>
-    <div><h4>Belanja</h4><ul><li><a href="#/outfit">Outfit</a></li><li><a href="#/aksesoris">Aksesoris</a></li><li><a href="#/peralatan">Peralatan</a></li></ul></div>
+    <div><a href="#/beranda" class="brand"><img class="logo" src="${LOGO}" alt="" width="44" height="44"><em class="wm">Guy<span>verse</span></em></a><p style="margin-top:10px;max-width:280px">Tempat belanja outfit, aksesoris, dan kebutuhan khusus pria.</p></div>
+    <div><h4>Belanja</h4><ul><li><a href="#/outfit">Outfit</a></li><li><a href="#/aksesoris">Aksesoris</a></li><li><a href="#/kebutuhan">Kebutuhan</a></li></ul></div>
     <div><h4>Perusahaan</h4><ul><li><a href="#/tentang">Tentang Kami</a></li><li><a href="#/tips">Gaya &amp; Tips</a></li><li><a href="javascript:void(0)">Karier</a></li></ul></div>
     <div><h4>Bantuan</h4><ul><li><a href="javascript:void(0)">Pengiriman</a></li><li><a href="javascript:void(0)">Pengembalian</a></li><li><a href="${WA_LINK}" target="_blank" rel="noopener">Hubungi Kami</a></li></ul></div>
   </div>
@@ -961,8 +940,8 @@ function bindAdmin(){
 }
 
 /* ---------- Routing ---------- */
-const PAGES  = {beranda:"home", tentang:"about", outfit:"outfit", aksesoris:"aksesoris", peralatan:"peralatan", tips:"tips", admin:"admin"};
-const TITLES = {home:"Gaya, Aksesoris & Peralatan Pria", about:"Tentang Kami", outfit:"Outfit", aksesoris:"Aksesoris", peralatan:"Peralatan", tips:"Gaya & Tips", admin:"Panel Admin"};
+const PAGES  = {beranda:"home", tentang:"about", outfit:"outfit", aksesoris:"aksesoris", kebutuhan:"kebutuhan", tips:"tips", admin:"admin"};
+const TITLES = {home:"Gaya, Aksesoris & Kebutuhan Pria", about:"Tentang Kami", outfit:"Outfit", aksesoris:"Aksesoris", kebutuhan:"Kebutuhan", tips:"Gaya & Tips", admin:"Panel Admin"};
 function route(){
   let h = location.hash.replace(/^#\/?/, "");
   if(!PAGES[h]) h = "beranda";
