@@ -147,6 +147,18 @@ footer a:hover{color:var(--copper)}
 .article-body-scroll::-webkit-scrollbar { width: 6px; }
 .article-body-scroll::-webkit-scrollbar-thumb { background: #ccc; border-radius: 3px; }
 
+/* UPDATE: CSS untuk Gambar Cover Artikel agar Frame Menyesuaikan */
+.article-cover-img {
+  width: 100%;
+  height: auto;
+  max-height: 400px;
+  object-fit: contain;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  background-color: #f4f2ee; /* Warna latar jika gambar transparan */
+  display: block;
+}
+
 .modal h2{font-family:'Archivo';color:var(--charcoal);margin-bottom:6px;font-size: 1.6rem;line-height: 1.3;}
 .note{color:var(--muted);font-size:.93rem;margin-bottom:14px}
 .close{position:absolute;top:10px;right:14px;background:none;border:0;font-size:1.8rem;cursor:pointer;color:var(--muted);transition:transform .2s var(--ease-spring),color .2s; z-index: 10;}
@@ -1087,8 +1099,9 @@ function openArticle(index) {
   const content = a.full || "Isi artikel belum tersedia.";
   const contentHtml = content.replace(/\n/g, '<br>');
 
+  // UPDATE: Menggunakan class .article-cover-img agar frame menyesuaikan gambar
   const coverHtml = a.image_url 
-    ? `<img src="${a.image_url}" style="width:100%; height:240px; object-fit:cover; border-radius:8px; margin-bottom:20px;">`
+    ? `<img src="${a.image_url}" class="article-cover-img" alt="${a.t}">`
     : `<div class="thumb t-${a.c.toLowerCase()}" style="height:160px;border-radius:8px;margin-bottom:20px;"><span class="emo" style="font-size:4rem">${a.i}</span></div>`;
 
   $("articleModalContent").innerHTML = `
