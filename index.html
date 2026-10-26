@@ -1134,9 +1134,12 @@ function toggleSave(i){
 function clearSaved(){ const old = [...saved]; saved = []; persistSaved(); syncButtons(); old.forEach(i => dbSave(i, false)); }
 function renderSaved(){
   if(!$("savedCount")) return;
+  // Filter out any invalid indices to prevent crash
+  saved = saved.filter(i => products[i]);
   $("savedCount").textContent = saved.length;
   $("savedItems").innerHTML = saved.length ? saved.map(i => { 
     const x = products[i];
+    if (!x) return ''; 
     const thumb = x.image_url 
       ? `<img src="${x.image_url}" alt="${x.n}">` 
       : x.i;
@@ -1552,20 +1555,36 @@ function bindAdmin(){
 const PAGES  = {beranda:"home", tentang:"about", outfit:"outfit", aksesoris:"aksesoris", kebutuhan:"kebutuhan", tips:"tips", admin:"admin"};
 const TITLES = {home:"Gaya, Aksesoris & Kebutuhan Pria", about:"Tentang Kami", outfit:"Outfit", aksesoris:"Aksesoris", kebutuhan:"Kebutuhan", tips:"Gaya & Tips", admin:"Panel Admin"};
 function route(){
-  let h = location.hash.replace(/^#\/?/, "");
-  if(!PAGES[h]) h = "beranda";
-  const key = PAGES[h];
-  document.querySelectorAll(".page").forEach(p => p.hidden = p.id !== "page-" + key);
-  document.querySelectorAll("#nav a").forEach(a => {
-    if(a.dataset.key === key) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current");
-  });
-  document.title = TITLES[key] + " - Guyverse";
-  $("nav").classList.remove("open");
-  if(R("pq")){ R("pq").value = pendingQ; pendingQ = ""; }
-  if(R("products")) filterProducts();
-  if(R("articles")) renderArticles("Semua");
-  if(key === "admin") toggleAdminLock();
-  window.scrollTo(0, 0);
+  try {
+    let h = location.hash.replace(/^#\/?/, "");
+    if(!PAGES[h]) h = "beranda";
+    const key = PAGES[h];
+    
+    document.querySelectorAll(".page").forEach(p => {
+      if(p.id === "page-" + key) {
+        p.hidden = false;
+        p.removeAttribute("hidden");
+      } else {
+        p.hidden = true;
+        p.setAttribute("hidden", "hidden");
+      }
+    });
+
+    document.querySelectorAll("#nav a").forEach(a => {
+      if(a.dataset.key === key) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current");
+    });
+    document.title = TITLES[key] + " - Guyverse";
+    if($("nav")) $("nav").classList.remove("open");
+    if(R("pq")){ R("pq").value = pendingQ; pendingQ = ""; }
+    if(R("products")) filterProducts();
+    if(R("articles")) renderArticles("Semua");
+    if(key === "admin") toggleAdminLock();
+    window.scrollTo(0, 0);
+  } catch (err) {
+    console.error("Routing error:", err);
+    const home = document.getElementById("page-home");
+    if(home) home.hidden = false;
+  }
 }
 window.addEventListener("hashchange", route);
 
@@ -1579,26 +1598,33 @@ function initWA(){
 }
 
 /* ---------- Mulai ---------- */
-layout(); 
-bindAuth(); 
-bindAdmin();
-initWA();
-document.querySelectorAll("img[data-logo]").forEach(i => i.src = LOGO); 
-renderAuthBtn(); 
-renderSaved();
+try {
+  layout(); 
+  bindAuth(); 
+  bindAdmin();
+  initWA();
+  document.querySelectorAll("img[data-logo]").forEach(i => i.src = LOGO); 
+  renderAuthBtn(); 
+  renderSaved();
 
-$("savedBtn").onclick = () => toggleSaved($("drawer").hidden);
-document.addEventListener("input", e => { if(e.target.dataset.role === "pq") filterProducts(); });
-document.addEventListener("click", e => {
-  const b = e.target.closest('[data-role="filters"] button');
-  if(!b) return;
-  b.parentElement.querySelectorAll("button").forEach(x => x.classList.remove("active"));
-  b.classList.add("active");
-  renderArticles(b.dataset.f);
-});
+  $("savedBtn").onclick = () => toggleSaved($("drawer").hidden);
+  document.addEventListener("input", e => { if(e.target.dataset.role === "pq") filterProducts(); });
+  document.addEventListener("click", e => {
+    const b = e.target.closest('[data-role="filters"] button');
+    if(!b) return;
+    b.parentElement.querySelectorAll("button").forEach(x => x.classList.remove("active"));
+    b.classList.add("active");
+    renderArticles(b.dataset.f);
+  });
 
-route();
-initData();
+  route();
+  initData();
+} catch (error) {
+  console.error("Initialization Error:", error);
+  // Fallback jika terjadi error saat inisialisasi agar halaman tidak blank
+  const homePage = document.getElementById("page-home");
+  if (homePage) homePage.hidden = false;
+}
 </script>
 </body>
 </html>
