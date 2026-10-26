@@ -17,8 +17,8 @@
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:'Source Serif 4',Georgia,serif;background:var(--bg);color:var(--text);line-height:1.6}
+html{scroll-behavior:smooth; overflow-x: hidden;}
+body{font-family:'Source Serif 4',Georgia,serif;background:var(--bg);color:var(--text);line-height:1.6; overflow-x: hidden;}
 h1,h2,h3,.brand,.btn,nav a{font-family:'Archivo',Arial,sans-serif}
 a{color:inherit;text-decoration:none}
 :focus-visible{outline:3px solid var(--copper);outline-offset:2px}
@@ -329,41 +329,53 @@ footer .logo{width:40px;height:40px}
 
 @media(max-width:820px){
   /* 1. Perbaikan Header/Navbar Mobile */
-  .nav { height: 60px; padding: 0 15px; }
+  .nav { height: 60px; padding: 0 15px; position: relative; }
   .brand { font-size: 1.2rem; gap: 8px; margin-right: auto; }
   .logo { width: 32px; height: 32px; }
   .menu-toggle { display: block; font-size: 1.4rem; padding: 5px; order: 3; margin-left: 8px; }
   .nav-actions { order: 2; gap: 6px; }
-  .icon-btn { padding: 6px 10px; font-size: 0.85rem; }
-  .nav-actions .btn { padding: 6px 12px; font-size: 0.85rem; }
+  .icon-btn { padding: 6px 8px; font-size: 0.85rem; }
+  .nav-actions .btn { padding: 6px 10px; font-size: 0.8rem; }
   .hide-mobile { display: none; } /* Menyembunyikan teks "Profil" */
   
   /* Dropdown Menu Mobile */
-  nav { top: 60px; padding: 15px 20px 20px; }
-  nav ul { gap: 20px; }
+  nav { 
+    position: absolute; 
+    top: 60px; 
+    left: 0; 
+    right: 0; 
+    background: var(--charcoal); 
+    display: none; 
+    padding: 15px 20px 20px; 
+    border-bottom: 1px solid rgba(200,150,62,.2); 
+    z-index: 100;
+  }
+  nav.open { display: block; }
+  nav ul { display: flex; flex-direction: column; gap: 16px; width: 100%; }
+  nav a { display: block; padding: 5px 0; font-size: 1rem; }
 
   /* 2. Perbaikan Hero & Form Pencarian */
-  .hero { padding: 60px 0 80px; }
-  .hero h1 { font-size: 2.2rem; }
+  .hero { padding: 50px 0 60px; }
+  .hero h1 { font-size: 2rem; }
   .hero p { font-size: 1rem; margin: 15px 0 25px; }
   .search { flex-direction: column; padding: 12px; gap: 8px; }
-  .search input, .search select { width: 100%; border-right: 0; border-bottom: 1px solid #eee; padding: 10px 5px; border-radius: 0; }
-  .search button { width: 100%; padding: 12px; }
+  .search input, .search select { width: 100%; border-right: 0; border-bottom: 1px solid #eee; padding: 12px 5px; border-radius: 0; font-size: 0.95rem; }
+  .search button { width: 100%; padding: 12px; font-size: 0.95rem; }
   
   /* 3. Perbaikan Statistik */
-  .stats { gap: 15px; justify-content: space-between; margin-top: 30px; }
-  .stats div { flex: 1; text-align: center; }
-  .stats strong { font-size: 1.5rem; }
-  .stats span { font-size: 0.85rem; }
+  .stats { gap: 10px; justify-content: space-between; margin-top: 30px; }
+  .stats div { flex: 1; text-align: center; background: rgba(255,255,255,0.05); padding: 10px 5px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.1); }
+  .stats strong { font-size: 1.4rem; }
+  .stats span { font-size: 0.8rem; }
 
   /* 4. Perbaikan Grid & Card (2 Kolom di HP) */
   .profile, .admin-wrap, .about-grid { grid-template-columns: 1fr; gap: 30px; }
   .grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
   
   .card-body { padding: 12px; }
-  .card h3 { font-size: 1rem; margin-bottom: 4px; }
-  .card p { font-size: 0.85rem; margin-bottom: 8px; }
-  .thumb { height: 160px; }
+  .card h3 { font-size: 0.95rem; margin-bottom: 4px; }
+  .card p { font-size: 0.8rem; margin-bottom: 8px; }
+  .thumb { height: 150px; }
   .badge { top: 8px; left: 8px; padding: 3px 8px; font-size: 0.65rem; }
   .save { width: 30px; height: 30px; top: 8px; right: 8px; }
   .save svg { width: 14px; height: 14px; }
@@ -373,7 +385,7 @@ footer .logo{width:40px;height:40px}
   
   /* 5. Perbaikan Jarak Section & Judul */
   section { padding: 40px 0; }
-  .section-head { flex-direction: column; align-items: flex-start; }
+  .section-head { flex-direction: column; align-items: flex-start; gap: 10px; }
   .section-head h2 { font-size: 1.5rem; }
   .finder { width: 100%; min-width: auto; }
 
