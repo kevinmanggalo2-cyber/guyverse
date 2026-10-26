@@ -235,7 +235,7 @@ footer .logo{width:40px;height:40px}
 .about-logo{position:relative;width:min(320px,100%);aspect-ratio:1;margin:0 auto;border-radius:50%;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at 30% 25%,#34495e,#14171A 70%);box-shadow:0 30px 70px rgba(27,31,35,.35),0 0 0 10px rgba(200,150,62,.15),0 0 0 11px rgba(200,150,62,.55)}
 .about-logo img{width:84%;height:auto;filter:drop-shadow(0 6px 18px rgba(200,150,62,.4))}
 @media(max-width:820px){.about-grid{grid-template-columns:1fr;gap:36px}.about-logo{width:min(260px,76%)}}
-.btn-shopee{display:inline-flex;align-items:center;gap:5px;padding:6px 12px;line-height:1.3;border-radius:5px;font-family:'Archivo';font-weight:600;font-size:.85rem;color:#fff;background:linear-gradient(135deg,#DF3F20,#C42E0E);box-shadow:0 6px 14px rgba(223,63,32,.3);transition:transform .2s,box-shadow .2s}
+.btn-shopee{display:inline-flex;align-items:center;gap:5px;padding:6px 12px;line-height:1.3;border-radius:5px;font-family:'Archivo';font-weight:600;font-size:.85rem;color:#fff;background:linear-gradient(135deg,#DF3F20,#C42E0E);box-shadow:0 6px 14px rgba(223,63,32,.3);transition:transform .2s,box-shadow .2s;cursor:pointer;border:none;}
 .btn-shopee:hover{transform:translateY(-1px);box-shadow:0 10px 20px rgba(223,63,32,.4)}
 .btn-shopee svg{width:14px;height:14px;flex:none}
 
@@ -838,7 +838,7 @@ function closeProfile(){ $("profileOverlay").hidden = true; }
 /* ---------- Ulasan & Kata Mereka Functions ---------- */
 let selectedRating = 5;
 function openReview(){
-  if(!user){ openAuth("Silakan masuk untuk menulis ulasan."); return; }
+  if(!user){ openAuth("Silakan masuk terlebih dahulu untuk menulis ulasan."); return; }
   $("reviewErr").textContent = "";
   $("reviewForm").reset();
   setRating(5);
@@ -971,10 +971,23 @@ async function initData(){
 }
 
 /* ---------- Daftar produk & artikel ---------- */
+function handleCheckout(url) {
+  if(!user) {
+    openAuth("Silakan masuk terlebih dahulu untuk melakukan checkout produk.");
+    return;
+  }
+  window.open(url, '_blank', 'noopener,noreferrer');
+}
+
 function shopeeBtn(x){
   const ok = !!x.shopee;
-  return `<a class="btn-shopee" href="${ok ? x.shopee : "javascript:void(0)"}"${ok ? ' target="_blank" rel="noopener"' : ' onclick="toast(\'Link Shopee untuk produk ini belum tersedia.\')"'} aria-label="Beli ${x.n} di Shopee">${ICON_BAG}Checkout</a>`;
+  if (ok) {
+    return `<a class="btn-shopee" href="javascript:void(0)" onclick="handleCheckout('${x.shopee}')" aria-label="Beli ${x.n} di Shopee">${ICON_BAG}Checkout</a>`;
+  } else {
+    return `<a class="btn-shopee" href="javascript:void(0)" onclick="toast('Link Shopee untuk produk ini belum tersedia.')" aria-label="Beli ${x.n} di Shopee" style="opacity:0.8">${ICON_BAG}Checkout</a>`;
+  }
 }
+
 function renderProducts(list){
   if(!R("products")) return;
   R("products").innerHTML = list.length ? list.map(x => {
