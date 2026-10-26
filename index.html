@@ -166,10 +166,20 @@ footer a:hover{color:var(--copper)}
 .drawer-head .close{position:static;color:#fff}
 #savedItems{flex:1;overflow:auto;padding:12px 20px}
 .ci{display:flex;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid #eee}
-.ci .e{font-size:2rem}
 .ci div:nth-child(2){flex:1}
 .ci small{color:var(--muted)}
 .drawer-foot{padding:20px;border-top:1px solid #eee}
+
+/* Update CSS untuk Gambar di dalam Drawer Tersimpan */
+.ci .e{
+  width: 44px; height: 44px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 2rem; flex: none; border-radius: 4px; overflow: hidden;
+  background: #f4f2ee;
+}
+.ci .e img {
+  width: 100%; height: 100%; object-fit: cover;
+}
 
 /* === TOAST ANIMATIONS === */
 .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--charcoal);color:#fff;padding:12px 22px;border-radius:var(--radius);z-index:120;border-left:4px solid var(--copper);opacity:0;pointer-events:none;transition:all .4s var(--ease-out-expo);}
@@ -1112,11 +1122,18 @@ function clearSaved(){ const old = [...saved]; saved = []; persistSaved(); syncB
 function renderSaved(){
   if(!$("savedCount")) return;
   $("savedCount").textContent = saved.length;
-  $("savedItems").innerHTML = saved.length ? saved.map(i => { const x = products[i]; return `
-    <div class="ci"><div class="e">${x.i}</div>
+  $("savedItems").innerHTML = saved.length ? saved.map(i => { 
+    const x = products[i];
+    const thumb = x.image_url 
+      ? `<img src="${x.image_url}" alt="${x.n}">` 
+      : x.i;
+    return `
+    <div class="ci">
+      <div class="e">${thumb}</div>
       <div><strong>${x.n}</strong><br><small>${x.c} · ${rp(x.p)}</small></div>
       <button class="rm" onclick="toggleSave(${i})" aria-label="Hapus dari simpanan">×</button>
-    </div>`; }).join("") : '<p class="empty">Belum ada produk tersimpan.</p>';
+    </div>`; 
+  }).join("") : '<p class="empty">Belum ada produk tersimpan.</p>';
 }
 function toggleSaved(open){ if($("drawer")) $("drawer").hidden = !open; }
 
