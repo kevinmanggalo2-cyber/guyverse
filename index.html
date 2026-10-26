@@ -336,11 +336,11 @@ footer .logo{width:40px;height:40px}
 .admin-lock h2{font-family:'Archivo';font-size:1.8rem;margin-bottom:12px;color:var(--charcoal)}
 .admin-lock p{color:var(--muted);margin-bottom:20px}
 
-/* Star Rating Input */
+/* === PERBAIKAN BINTANG ULASAN === */
 .star-rating{display:flex;gap:5px;font-size:2rem;color:#ccc;cursor:pointer;margin-bottom:15px}
-.star-rating .star{transition:color .2s, transform .2s var(--ease-spring);}
-.star-rating .star:hover{transform:scale(1.2);}
-.star-rating .star.active{color:var(--copper)}
+.star-rating span{padding: 0 4px; transition:color .2s, transform .2s var(--ease-spring);}
+.star-rating span:hover{transform:scale(1.2);}
+.star-rating span.active{color:var(--copper)}
 
 /* Admin Tabs */
 .admin-tabs{display:flex; gap:10px; margin-bottom:20px; border-bottom:2px solid #e4e0d8; padding-bottom:10px;}
@@ -859,7 +859,7 @@ function layout(){
     <p class="note">Ulasanmu akan tampil di halaman beranda.</p>
     <form id="reviewForm">
       <div class="star-rating" id="starRating">
-        <span data-val="1">★</span><span data-val="2">★</span><span data-val="3">★</span><span data-val="4">★</span><span data-val="5">★</span>
+        <span class="star" data-val="1">★</span><span class="star" data-val="2">★</span><span class="star" data-val="3">★</span><span class="star" data-val="4">★</span><span class="star" data-val="5">★</span>
       </div>
       <textarea id="rText" placeholder="Tulis ulasanmu di sini..." required minlength="10" maxlength="300"></textarea>
       <p class="err" id="reviewErr"></p>
